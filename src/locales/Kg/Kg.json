@@ -1,0 +1,118 @@
+{
+  "header": {
+    "home": "Башкы бет",
+    "aboutTheMovement": "Кыймыл жөнүндө",
+    "direction": "Багыт",
+    "Events": "Иш-чаралар",
+    "Projects": "Долбоорлор",
+    "Media": "Медиа",
+    "regionalOffice": "Аймактык бөлүмдөр",
+    "button": "Кирүү"
+  },
+  "footer": {
+    "logo": "Кыргызстандын жаштар кыймылы",
+    "aboutTheMovement": "Кыймыл жөнүндө",
+    "direction": "Багыт",
+    "Events": "Иш-чаралар",
+    "Projects": "Долбоорлор",
+    "Media": "Медиа",
+    "regionalOffice": "Аймактык бөлүмдөр",
+    "news": "Жаңылыктар",
+    "brandMaterials": "Бренд материалдар",
+    "media": "Медиа",
+    "ourSocialNetwork": "Биздин социалдык тармактар:",
+    "contact": "Байланыш:",
+    "gmail": "Электрондук почта:",
+    "address": "Дарек",
+    "streetAndHouse": "Көчө , Үй"
+  },
+    "landing": {
+    "aboutTheMovement": "Кыймыл тууралуу",
+    "upcomingEvents": "Алдыдагы иш-чаралар",
+    "news": "Жаңылыктар",
+    "brandMaterials": "Бренд материалдар",
+    "button": "Толук маалымат",
+     "direction": "Ишмердүүлүк багыты"
+  },
+  "aboutTheMovement": {
+  "about": "Кыймыл жөнүндө",
+  "goals": "Максаттар жана миссия",
+  "laws": "Мыйзамдык негиз",
+  "management": "Жетекчилик"
+},
+"areaOfActivity": {
+  "home": "Башкы бет",
+  "direction": "Ишмердүүлүк багыты"
+},
+  "events": {
+    "home": "Башкы бет",
+    "events": "Иш-чаралар",
+    "upcomingEvents": "Алдыдагы иш-чаралар",
+    "eventArchive": "Иш-чаралар архиви",
+    "button": "Толугураак",
+    "detailevent": "Иш-чаранын деталдары",
+    "street": "Көчө",
+    "house": "Үй"
+  },
+  "eventArchive": {
+    "home": "Башкы бет",
+    "events": "Иш-чаралар",
+    "eventArchive": "Иш-чаралар архиви"
+  },
+  "projects": {
+    "home": "Башкы бет",
+    "projects": "Долбоорлор"
+  },
+  "projectName": {
+    "home": "Башкы бет",
+    "projects": "Долбоорлор",
+    "projectName": "Долбоор “Аты”"
+  },
+  "media": {
+    "home": "Башкы бет",
+    "media": "Медиа",
+    "PhotoGallery": "Фотогалерея",
+    "allPhoto": "Баардык сүрөттөр",
+    "VideoLibrary": "Видеотека",
+    "allVideo": "Баардык видеолор"
+  },
+  "PhotoGallery": {
+    "home": "Башкы бет",
+    "media": "Медиа",
+    "PhotoGallery": "Фотогалерея",
+    "selectDate": "Датаны тандаңыз",
+    "goBack": "Артка кайтуу"
+  },
+  "nameAlbom": {
+    "home": "Башкы бет",
+    "media": "Медиа",
+    "PhotoGallery": "Фотогалерея",
+    "nameAlbom": "Альбом “Аты”"
+  },
+  "VideoLibrary": {
+    "home": "Башкы бет",
+    "media": "Медиа",
+    "VideoLibrary": "Видеотека",
+    "PhotoGallery": "Фотогалерея",
+    "selectDate": "Датаны тандаңыз",
+    "goBack": "Артка кайтуу"
+  },
+  "regionalOffice": {
+    "home": "Башкы бет",
+    "regionalOffice": "Регионалдык бөлүм"
+  },
+  "news": {
+    "home": "Башкы бет",
+    "news": "Жаңылыктар",
+    "otherNews": "Башка жаңылыктар",
+    "button": "Толугураак"
+  },
+  "brandMaterials": {
+    "home": "Башкы бет",
+    "brandMaterials": "Бренд материалдар",
+    "SimilarProducts": "Окшош товарлар",
+    "price": "Баасы"
+  }
+
+
+}

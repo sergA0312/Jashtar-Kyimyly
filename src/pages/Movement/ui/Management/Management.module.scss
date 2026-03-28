@@ -1,0 +1,135 @@
+
+.management {
+    padding: 80px 0;
+    color: #111111;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .title {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 100%;
+    margin-bottom: 60px;
+  }
+  
+  .cardWrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    width: 100%;
+    max-width: 1320px;
+  }
+  
+  .personCard {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    aspect-ratio: 312 / 489;
+  
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+  
+  .personImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .personInfo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 24px 16px;
+    text-align: center;
+    z-index: 2;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  
+  .shadowOverlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.966) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    z-index: 1;
+  }
+  
+  .personName, .personPosition {
+    z-index: 7;
+    text-align: center;
+    font-weight: 400;
+    line-height: 120%;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
+  }
+  
+  .personName {
+    font-size: 20px;
+  }
+  
+  .personPosition {
+    margin-top: 16px;
+    font-size: 20px;
+  }
+  @media (max-width: 1200px) {
+    .cardWrapper {
+      gap: 16px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .cardWrapper {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .personName, .personPosition {
+      font-size: 18px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .management {
+      padding: 40px 16px;
+    }
+    .cardWrapper {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .title {
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+    .personName, .personPosition {
+      font-size: 16px;
+    }
+    .personCard {
+      aspect-ratio: 1 / 1.5;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .title {
+      font-size: 28px;
+    }
+  }

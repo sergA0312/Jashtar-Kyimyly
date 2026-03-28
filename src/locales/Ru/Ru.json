@@ -1,0 +1,123 @@
+{
+  "header": {
+    "home": "Главная",
+    "aboutTheMovement": "О движении",
+    "direction": "Направление",
+    "Events": "Мероприятия",
+    "Projects": "Проекты",
+    "Media": "Медиа",
+    "regionalOffice": "Рег.отделения",
+    "button": "Войти"
+  },
+  "footer": {
+    "logo": "Молодежное движение Кыргызстана",
+    "aboutTheMovement": "О движении",
+    "direction": "Направление",
+    "Events": "Мероприятия",
+    "Projects": "Проекты",
+    "Media": "Медиа",
+    "regionalOffice": "Региональные отделения",
+    "news": "Новости",
+    "brandMaterials": "Бренд материалы",
+    "media": "Медиа",
+    "ourSocialNetwork": "Наши соцсети:",
+    "Instagram": "Instagram",
+    "Facebook": "Facebook",
+    "YouTube": "YouTube",
+    "contact": "Контакты:",
+    "WhatsApp": "WhatsApp:",
+    "Telegram": "Telegram:",
+    "gmail": "Электронная почта:",
+    "gmailAddress": "bsainaev@gmail.com",
+    "address": "Адресс",
+    "streetAndHouse": "Улица , Дом"
+  },
+ "landing": {
+  "aboutTheMovement": "О движении",
+  "upcomingEvents": "Предстоящие мероприятия",
+  "news": "Новости",
+  "brandMaterials": "Бренд материалы",
+  "button": "Подробнее",
+  "direction": "Направление деятельности" 
+},
+"aboutTheMovement": {
+  "about": "О движении",
+  "goals": "Цели и миссии",
+  "laws": "Законодательная база",
+  "management": "Руководство"
+},
+"areaOfActivity": {
+  "home": "Главная",
+  "direction": "Направление деятельности"
+},
+"events": {
+  "home": "Главная",
+  "events": "Мероприятия",
+  "upcomingEvents": "Предстоящие мероприятия",
+  "eventArchive": "Архив мероприятий",
+  "button": "Подробнее",
+  "detailevent": "Детали мероприятия",
+  "street": "Улица",
+  "house": "Дом"
+},
+ "eventArchive": {
+  "home": "Главная",
+  "events": "Мероприятия",
+  "eventArchive": "Архив мероприятий"
+ },
+ "projects": {
+    "home": "Главная",
+    "projects": "Проекты"
+ },
+ "projectName": {
+    "home": "Главная",
+    "projects":"Проекты",
+    "projectName": "Проект “Название”"
+ },
+ "media":{
+    "home": "Главная",
+    "media":"Медиа",
+    "PhotoGallery": "Фотогалерея",
+    "allPhoto": "Все фото",
+    "VideoLibrary": "Видеотека",
+    "allVideo": "Все видео"
+ },
+ "PhotoGallery":{
+    "home": "Главная",
+    "media":"Медиа",
+    "PhotoGallery": "Фотогалерея",
+    "selectDate": "Выбрать дату",
+    "goBack": "Вернуться назад"
+ },
+ "nameAlbom": {
+     "home": "Главная",
+    "media":"Медиа",
+    "PhotoGallery": "Фотогалерея",
+    "nameAlbom": "Альбом “Название”"
+ },
+ "VideoLibrary": {
+    "home": "Главная",
+    "media":"Медиа",
+    "VideoLibrary": "Видеотека",
+    "PhotoGallery": "Фотогалерея",
+    "selectDate": "Выбрать дату",
+    "goBack": "Вернуться назад"
+ },
+ "regionalOffice": {
+     "home": "Главная",
+     "regionalOffice":"Региональное отделение"
+ },
+ "news": {
+    "home": "Главная",
+    "news": "Новости",
+    "otherNews": "Другие новости",
+    "button": "Подробнее"
+ },
+"brandMaterials": {
+    "home":"Главная",
+    "brandMaterials":"Бренд материалы",
+    "SimilarProducts": "Похожие товары",
+    "price": "Цена"
+}
+
+}

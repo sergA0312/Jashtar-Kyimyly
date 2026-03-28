@@ -1,0 +1,508 @@
+// Переменные
+$primary-blue: #2e6cf4;
+$light-blue: #e6f5fa;
+$dark-blue: #c1d3fc;
+$green: #c0eecc;
+$white: #ffffff;
+$black: #111111;
+$gray-light: #e8e8e8;
+$gray-medium: #a0a0a0;
+
+// Миксины для анимаций
+@mixin fadeInUp($delay: 0s) {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease-out #{$delay} forwards;
+}
+
+@mixin fadeInLeft($delay: 0s) {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: fadeInLeft 0.6s ease-out #{$delay} forwards;
+}
+
+@mixin fadeInRight($delay: 0s) {
+  opacity: 0;
+  transform: translateX(20px);
+  animation: fadeInRight 0.6s ease-out #{$delay} forwards;
+}
+
+// Анимации
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Основной контейнер
+.container {
+  min-height: 100vh;
+  background-color: $light-blue;
+  padding: 0;
+  position: relative;
+  // overflow-x: auto;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  @media (max-width: 1440px) {
+    padding: 0 20px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
+}
+
+// Хедер
+.header {
+  @include fadeInUp(0.1s);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 60px;
+  background-color: $white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 1440px) {
+    padding: 20px 40px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 16px 20px;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 12px 16px;
+  }
+}
+
+.logo {
+  width: 51.56px;
+  height: 48px;
+
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 37px;
+  }
+}
+
+.title {
+  font-family: 'Inter', Helvetica;
+  font-weight: 600;
+  font-size: 40px;
+  color: $black;
+  text-align: center;
+  margin: 0;
+
+  @media (max-width: 1200px) {
+    font-size: 32px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 20px;
+  }
+}
+
+.logoutButton {
+  display: inline-flex;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 24px;
+  background-color: $white;
+  border: 1px solid $primary-blue;
+  border-radius: 10px;
+  color: $primary-blue;
+  font-family: 'Segoe UI', Helvetica;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $primary-blue;
+    transform: translateY(-1px);
+    color: $white;
+  }
+
+  @media (max-width: 768px) {
+    height: 40px;
+    padding: 8px 16px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    height: 36px;
+    padding: 6px 12px;
+    font-size: 14px;
+    gap: 6px;
+  }
+}
+
+.logoutIcon {
+  width: 24px;
+  height: 24px;
+
+  @media (max-width: 480px) {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+// Основной контент
+.mainContent {
+  display: flex;
+  gap: 24px;
+  padding: 32px 60px;
+  max-width: 1440px;
+  margin: 0 auto;
+
+  @media (max-width: 1440px) {
+    padding: 24px 40px;
+  }
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 16px;
+    gap: 16px;
+  }
+}
+
+// Сайдбар
+.sidebar {
+  @include fadeInLeft(0.2s);
+  width: 312px;
+  flex-shrink: 0;
+  position: relative;
+
+  @media (max-width: 1200px) {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
+}
+
+.sidebarCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 25px 24px;
+  background-color: $white;
+  border-radius: 20px;
+  box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.25);
+  animation: scaleIn 0.6s ease-out 0.3s both;
+  position: sticky;
+  top: 100px;
+}
+
+.avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 480px) {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.userName {
+  font-family: 'Inter', Helvetica;
+  font-weight: 400;
+  font-size: 20px;
+  color: $black;
+  text-align: center;
+  margin: 0;
+
+  @media (max-width: 480px) {
+    font-size: 18px;
+  }
+}
+
+.userEmail {
+  font-family: 'Inter', Helvetica;
+  font-weight: 400;
+  font-size: 14px;
+  color: $gray-medium;
+  text-align: center;
+  margin: 0;
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
+}
+
+.editButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 24px;
+  width: 100%;
+  background-color: $primary-blue;
+  color: $white;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Segoe UI', Helvetica;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: rgba(46, 108, 244, 0.9);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 480px) {
+    padding: 8px 16px;
+    font-size: 16px;
+  }
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 -24px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 24px;
+  width: 100%;
+  background-color: $white;
+  border: none;
+  color: $black;
+  font-family: 'Inter', Helvetica;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: rgba(17, 17, 17, 0.05);
+  }
+
+  @media (max-width: 480px) {
+    padding: 12px 20px;
+    font-size: 18px;
+  }
+  &.active{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  // padding: 10px 24px;
+  width: 100%;
+  background-color: $primary-blue;
+  color: $white;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Segoe UI', Helvetica;
+  // font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: rgba(46, 108, 244, 0.9);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 480px) {
+    padding: 8px 16px;
+    font-size: 16px;
+  }
+  }
+}
+
+.contentArea {
+  @include fadeInRight(0.3s);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  max-width: 984px;
+
+  @media (max-width: 768px) {
+    gap: 32px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 24px;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @media (max-width: 768px) {
+    gap: 20px;
+  }
+}
+
+.sectionTitle {
+  font-family: 'Inter', Helvetica;
+  font-weight: 500;
+  font-size: 32px;
+  color: $black;
+  text-align: center;
+  margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 24px;
+  }
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+// Стили для карточек проектов
+.projectCard {
+  @include fadeInUp(0.4s);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  height: 191px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation-delay: calc(var(--index) * 0.1s);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 768px) {
+    height: 160px;
+    padding: 12px;
+  }
+
+  @media (max-width: 480px) {
+    height: 140px;
+    padding: 10px;
+  }
+}
+
+.availableProject {
+  background-color: $dark-blue;
+
+  &:hover {
+    background-color: rgba(193, 211, 252, 0.8);
+  }
+}
+
+.completedProject {
+  background-color: $green;
+
+  &:hover {
+    background-color: rgba(192, 238, 204, 0.8);
+  }
+}
+
+.projectTitle {
+  font-family: 'Inter', Helvetica;
+  font-weight: 400;
+  font-size: 24px;
+  color: $black;
+  text-align: center;
+  margin: 0;
+  line-height: 1.3;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 18px;
+  }
+}

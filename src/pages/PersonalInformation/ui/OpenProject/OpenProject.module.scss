@@ -1,0 +1,98 @@
+// Переменные
+$primary-blue: #2e6cf4;
+$light-blue: #e6f5fa;
+$dark-blue: #c1d3fc;
+$green: #c0eecc;
+$white: #ffffff;
+$black: #111111;
+$gray-light: #e8e8e8;
+$gray-medium: #a0a0a0;
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @media (max-width: 768px) {
+        gap: 20px;
+    }
+}
+
+.sectionTitle {
+    font-family: 'Inter', Helvetica;
+    font-weight: 500;
+    font-size: 32px;
+    color: $black;
+    text-align: center;
+    margin: 0;
+
+    @media (max-width: 768px) {
+        font-size: 28px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 24px;
+    }
+}
+
+.projectsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr)!important;
+    gap: 24px;
+    width: 100%;
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+.projectCard {
+    // @include fadeInUp(0.4s);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    height: 191px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation-delay: calc(var(--index) * 0.1s);
+    background: linear-gradient( #e6f5fa 0%, #c1d3fc);
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 768px) {
+        height: 160px;
+        padding: 12px;
+    }
+
+    @media (max-width: 480px) {
+        height: 140px;
+        padding: 10px;
+    }
+}
+
+@mixin fadeInUp($duration: 0.5s) {
+    animation: fadeInUp $duration ease-in-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

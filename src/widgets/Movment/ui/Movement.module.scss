@@ -1,0 +1,112 @@
+.title { 
+  font-size: 35px !important;
+  margin-bottom: 40px;
+  text-align: center;
+  margin-left: -25px;
+  @media (max-width: 480px) {
+    font-size: 22px !important;
+  }
+}
+
+.bodyText {
+  font-size: 24px !important;
+  line-height: 1.5;
+  width: 90%;
+  text-align: center;
+  margin-bottom: 50px;
+  @media (max-width: 480px) {
+    font-size: 12px !important;
+    margin-bottom: 0px;
+  }
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.card {
+  margin-left: -25x;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.cardItem {
+  background-color: #ABC4FB;
+  padding: 40px 60px; 
+  border-radius: 20px;
+}
+
+.cardTitle {
+  font-size: 20px;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cardDescription {
+  font-size: 16px;
+  text-align: center;
+  font-weight: 400;
+  color: #333333;
+  margin-top: 10px;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 📱 Адаптивка */
+@media (max-width: 1024px) {
+  .title {
+    font-size: 28px;
+  }
+
+  .bodyText {
+    font-size: 16px;
+  }
+
+  .card {
+    padding: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: -30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 24px;
+  }
+
+  .bodyText {
+    font-size: 15px;
+  }
+
+
+  .cardItem {
+    padding: 30px 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 20px;
+  }
+
+  .bodyText {
+    font-size: 14px;
+  }
+
+  .cardItem {
+    padding: 20px;
+  }
+ .card {
+    grid-template-columns: 2fr;
+    gap: 15px;
+  }
+  .cardDescription {
+    font-size: 14px;
+    width: 100%;
+  }
+}

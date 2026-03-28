@@ -1,0 +1,154 @@
+.container1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 50px;
+
+  .materialsContainer {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+
+    .materialCard {
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      width: 312px;
+      height: 400px;
+      padding: 16px;
+      text-align: center;
+      transition: 0.3s;
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      }
+
+      img {
+        width: 280px;
+        height: 242px;
+        border-radius: 20px;
+      }
+
+      div {
+        display: flex;
+        flex-direction: column;
+        padding-top: 10px;
+        gap: 20px;
+      }
+
+      h3 {
+        font-weight: 400;
+        font-size: 36px;
+        color: rgba(17, 17, 17, 1);
+      }
+
+      .price {
+        font-weight: 500;
+        font-size: 24px;
+        color: rgba(17, 17, 17, 1);
+      }
+    }
+  }
+
+  .controlsRow {
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+
+    .btns {
+      width: 44px;
+      height: 44px;
+      border-radius: 100px;
+      background-color: #2e6cf4;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 12px;
+        height: 12px;
+      }
+
+      &:disabled {
+        background-color: rgba(200, 200, 200, 0.5);
+        cursor: not-allowed;
+
+        img {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    .pagination {
+      display: flex;
+      gap: 5px;
+
+      button {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        border: 1px solid #2e6cf4;
+        cursor: pointer;
+        background-color: #f0f0f0;
+        font-weight: bold;
+
+        &.activeNumber {
+          background-color: #2e6cf4;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width:1400px) {
+  .materialsContainer {
+    flex-wrap: wrap;
+  }
+}
+
+@media(max-width:400px) {
+  .materialsContainer {
+    .materialCard {
+      width: 250px;
+      height: 350px;
+
+      img {
+        width: 240px;
+        height: 242px;
+
+      }
+
+      h3 {
+        font-weight: 400;
+        font-size: 20px;
+        color: rgba(17, 17, 17, 1);
+      }
+    }
+  }
+}
+
+@media(max-width:300px) {
+  .materialsContainer {
+    .materialCard {
+      width: 200px;
+      height: 270px;
+
+      img {
+        width: 190px;
+        height: 172px;
+
+      }
+
+      h3 {
+        font-weight: 400;
+        font-size: 20px;
+        color: rgba(17, 17, 17, 1);
+      }
+    }
+  }
+}

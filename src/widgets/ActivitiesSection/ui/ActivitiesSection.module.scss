@@ -1,0 +1,23 @@
+
+.activitiesSection {
+  background-color: #f7f7f7;
+}
+
+.sectionTitle {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.cardsContainer {
+  height: auto;
+  margin-bottom: 100px !important;
+  border-radius: 60px;
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  max-width: 1319px;
+  margin: 0 auto; 
+}

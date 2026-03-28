@@ -1,0 +1,76 @@
+.goalsBlock {
+  width: 100%;
+  max-width: 1096px;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+}
+
+.goalsHeader {
+  margin-top: 8rem;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 100%;
+  text-align: center;
+}
+
+.goalsContent {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+
+  ul {
+    margin-top: 3rem;
+    padding: 0;
+    list-style: inside;
+  }
+
+  li {
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    margin-bottom: 12px;
+  }
+}
+@media (max-width: 1024px) {
+  .goalsHeader {
+    font-size: 32px;
+    margin-top: 6rem;
+  }
+
+  .goalsContent {
+    align-items: center;
+    text-align: center;
+
+    ul {
+      margin-top: 2rem;
+      text-align: start;
+    }
+
+    li {
+      font-size: 18px;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .goalsHeader {
+    font-size: 24px;
+    margin-top: 4rem;
+  }
+
+  .goalsContent {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    ul {
+      margin-top: 1rem;
+    }
+
+    li {
+      text-align: start;
+      font-size: 16px;
+    }
+  }
+}

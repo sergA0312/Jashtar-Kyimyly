@@ -1,0 +1,43 @@
+import { create } from "zustand";
+import { axiosInstance } from "@/app/api/apiclient";
+import { AxiosError } from "axios";
+
+export interface Material {
+    id: number;
+    title: string;
+    price: number;
+    slug: string;
+    image: string;
+}
+
+interface MaterialsState {
+    materials: Material[];
+    loading: boolean;
+    error: string | null;
+    fetchMaterials: () => Promise<void>;
+}
+
+export const useMaterialsStore = create<MaterialsState>((set) => ({
+    materials: [],
+    loading: false,
+    error: null,
+
+    fetchMaterials: async () => {
+        set({ loading: true, error: null });
+        try {
+            const response = await axiosInstance.get("/home/brand-materials/");
+            const mappedMaterials = response.data.map((item: any) => ({
+                id: item.id,
+                title: item.title,
+                image: item.file,
+                price: item.price,
+            }));
+            set({ materials: mappedMaterials });
+        } catch (err) {
+            const error = err as AxiosError<{ message: string }>;
+            set({ error: error.response?.data?.message || "Бир нерсе туура эмес болуп калды" });
+        } finally {
+            set({ loading: false });
+        }
+    },
+}));
