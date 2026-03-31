@@ -26,24 +26,24 @@
     "address": "Дарек",
     "streetAndHouse": "Көчө , Үй"
   },
-    "landing": {
+  "landing": {
     "aboutTheMovement": "Кыймыл тууралуу",
     "upcomingEvents": "Алдыдагы иш-чаралар",
     "news": "Жаңылыктар",
     "brandMaterials": "Бренд материалдар",
     "button": "Толук маалымат",
-     "direction": "Ишмердүүлүк багыты"
+    "direction": "Ишмердүүлүк багыты"
   },
   "aboutTheMovement": {
-  "about": "Кыймыл жөнүндө",
-  "goals": "Максаттар жана миссия",
-  "laws": "Мыйзамдык негиз",
-  "management": "Жетекчилик"
-},
-"areaOfActivity": {
-  "home": "Башкы бет",
-  "direction": "Ишмердүүлүк багыты"
-},
+    "about": "Кыймыл жөнүндө",
+    "goals": "Максаттар жана миссия",
+    "laws": "Мыйзамдык негиз",
+    "management": "Жетекчилик"
+  },
+  "areaOfActivity": {
+    "home": "Башкы бет",
+    "direction": "Ишмердүүлүк багыты"
+  },
   "events": {
     "home": "Башкы бет",
     "events": "Иш-чаралар",
@@ -113,6 +113,4 @@
     "SimilarProducts": "Окшош товарлар",
     "price": "Баасы"
   }
-
-
 }
