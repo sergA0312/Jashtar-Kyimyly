@@ -6,12 +6,12 @@ export const ProjectName: FC = () => {
   return (
     <MultiContainer className={styles.projectBlock}>
       <div className={styles.projectHeader}>
-        <Typography variant="h1" color="black">
+        <Typography variant="title" color="black">
           Проект "Название"
         </Typography>
       </div>
       <div className={styles.projectContent}>
-        <Typography variant="bodyText" color="black">
+        <Typography variant="desc" color="black">
         Однозначно, интерактивные прототипы формируют глобальную экономическую сеть и при этом —  заблокированы в рамках своих собственных рациональных ограничений. Значимость этих проблем настолько очевидна, что повышение уровня гражданского сознания создаёт необходимость включения в производственный план целого ряда внеочередных мероприятий с учётом комплекса приоретизации разума над эмоциями.
         </Typography>
       </div>

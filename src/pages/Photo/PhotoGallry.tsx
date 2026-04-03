@@ -5,8 +5,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./PhotoGallry.module.scss";
 import { useTranslation } from "react-i18next";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-
 import { useImagesStore } from "@/app/store/Media/images";
 
 const albums = Array.from({ length: 42 }, (_, i) => ({
@@ -83,9 +81,7 @@ export function PhotoGallry() {
           className={styles.pageButton}
           onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
           disabled={currentPage === 1}
-        >
-          <ChevronLeft />
-        </button>
+        ></button>
 
         <div className={styles.pageNumbers}>
           {Array.from({ length: totalPages }, (_, i) => (
@@ -105,9 +101,7 @@ export function PhotoGallry() {
           className={styles.pageButton}
           onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
           disabled={currentPage === totalPages}
-        >
-          <ChevronRight />
-        </button>
+        ></button>
       </div>
     </div>
   );

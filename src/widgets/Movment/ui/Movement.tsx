@@ -45,11 +45,11 @@ const Movement = () => {
   ];
   return (
     <div className={`${style.movement} container`}>
-      <Typography className={style.title} variant="h6" color="black">
+      <Typography className={style.title} variant="card_title" color="black">
         {t("landing.aboutTheMovement")}
       </Typography>
 
-      <Typography className={style.bodyText} variant="bodyText" color="black">
+      <Typography className={style.bodyText} variant="card_title" color="black">
         {t("landing.aboutTheMovementDescription")}
       </Typography>
 
