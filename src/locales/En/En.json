@@ -28,22 +28,23 @@
   },
   "landing": {
     "aboutTheMovement": "About the Movement",
+    "aboutTheMovementDescription": "Suddenly, the key features of the project's structure are only a method of political participation and are equally left to their own devices.",
     "upcomingEvents": "Upcoming Events",
     "news": "News",
     "brandMaterials": "Brand Materials",
     "button": "Learn more",
-      "direction": "Direction of Activity"
+    "direction": "Direction of Activity"
   },
   "aboutTheMovement": {
-  "about": "About the Movement",
-  "goals": "Goals and Mission",
-  "laws": "Legislative Framework",
-  "management": "Management"
-},
-"areaOfActivity": {
-  "home": "Home",
-  "direction": "Area of Activity"
-},
+    "about": "About the Movement",
+    "goals": "Goals and Mission",
+    "laws": "Legislative Framework",
+    "management": "Management"
+  },
+  "areaOfActivity": {
+    "home": "Home",
+    "direction": "Area of Activity"
+  },
   "events": {
     "home": "Home",
     "events": "Events",
@@ -113,6 +114,4 @@
     "SimilarProducts": "Similar products",
     "price": "Price"
   }
-
-
 }
