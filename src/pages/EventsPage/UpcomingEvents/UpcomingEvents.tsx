@@ -142,7 +142,6 @@ const UpcomingEvents: React.FC = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-
         <button className={`next ${styles.customArrow}`}>
           <ChevronRight />
         </button>

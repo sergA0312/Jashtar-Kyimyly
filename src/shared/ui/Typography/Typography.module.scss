@@ -1,0 +1,49 @@
+.title {
+  font-size: clamp(1.5rem, 3vw, 2.5rem); //40зч -24
+}
+
+.navigation {
+  font-size: 1rem; //16px
+}
+
+.card_title {
+  font-size: clamp(1rem, 2.5vw, 1.5rem); //24px -16
+}
+
+.card_button {
+  font-size: 1.125rem; //18px-16px
+}
+
+.card__date {
+  font-size: clamp(0.6875rem, 1vw, 0.9375rem); //15px-11
+}
+
+.card_desc {
+  font-size: clamp(0.875rem, 2vw, 1.25rem); //20px - 14px
+}
+
+.desc {
+  font-size: clamp(0.75rem, 2.5vw, 1.25rem); //24px - 12px
+}
+
+.w400 {
+  font-weight: 400;
+}
+.w500 {
+  font-weight: 500;
+}
+.w600 {
+  font-weight: 600;
+}
+
+.black {
+  color: var(--main-black);
+}
+
+.black400 {
+  color: var(--main-black-400);
+}
+
+.white {
+  color: var(--main-white);
+}

@@ -1,28 +1,37 @@
-import { ReactNode } from "react";
+import { ElementType } from "react";
+import { TypographyProps, TypographyVariant } from "@/shared/types";
+import clsx from "clsx";
+import styles from "./Typography.module.scss";
 
-interface TypographyProps {
-  children: ReactNode;
-  variant:
-    | "bodyText"
-    | "caption"
-    | "h1"
-    | "h2"
-    | "h3"
-    | "h4"
-    | "h5"
-    | "h6"
-    | "li";
-  color: string;
-  className?: string;
-}
+const variantMap: Record<TypographyVariant, ElementType> = {
+  title: "h2",
+  desc: "span",
+  navigation: "span", 
+  card_title: "h3",   
+  card_button: "span",
+  card_date: "time",
+  card_desc:"p"
+};
 
 export const Typography = ({
   children,
   variant,
-  color,
-  className = "",
+  color = "black",
+  weight = "400",
+  className,
 }: TypographyProps) => {
-  const combinedClassName = `typography-${variant} text-${color} ${className}`;
+  const Component = variantMap[variant];
 
-  return <p className={combinedClassName.trim()}>{children}</p>;
+  return (
+    <Component
+      className={clsx(
+        styles[variant],
+        styles[`w${weight}`],  
+        styles[color],        
+        className
+      )}
+    >
+      {children}
+    </Component>
+  );
 };
