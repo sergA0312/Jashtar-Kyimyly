@@ -64,28 +64,6 @@ export function PhotoGallry() {
         </div>
       </header>
 
-            {/* Пагинация */}
-            <div className={styles.pagination}>
-                <button
-                    className={styles.pageButton}
-                    onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-                    disabled={currentPage === 1}
-                >   {/* @ts-ignore */}
-                    <IoIosArrowBack/>
-                </button>
-      {/* Галерея */}
-      <div className={styles.gallery}>
-        {currentAlbums.map((album) => (
-          <AlbumCard
-            key={album.id}
-            title={album.title}
-            event={album.event}
-            imageUrl={album.imageUrl}
-            count={album.count}
-          />
-        ))}
-      </div>
-
       {/* Пагинация */}
       <div className={styles.pagination}>
         <button
@@ -93,17 +71,43 @@ export function PhotoGallry() {
           onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
           disabled={currentPage === 1}
         >
-          <ChevronLeft />
+          {" "}
+          {/* @ts-ignore */}
+          <IoIosArrowBack />
         </button>
+        {/* Галерея */}
+        <div className={styles.gallery}>
+          {currentAlbums.map((album) => (
+            <AlbumCard
+              key={album.id}
+              title={album.title}
+              event={album.event}
+              imageUrl={album.imageUrl}
+              count={album.count}
+            />
+          ))}
+        </div>
 
-                <button
-                    className={styles.pageButton}
-                    onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
-                    disabled={currentPage === totalPages}
-                >   {/* @ts-ignore */}
-                    <IoIosArrowForward />
-                </button>
-            </div>
+        {/* Пагинация */}
+        <div className={styles.pagination}>
+          <button
+            className={styles.pageButton}
+            onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+            disabled={currentPage === 1}
+          >
+            <ChevronLeft />
+          </button>
+
+          <button
+            className={styles.pageButton}
+            onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+            disabled={currentPage === totalPages}
+          >
+            {" "}
+            {/* @ts-ignore */}
+            <IoIosArrowForward />
+          </button>
+        </div>
         <div className={styles.pageNumbers}>
           {Array.from({ length: totalPages }, (_, i) => (
             <button
