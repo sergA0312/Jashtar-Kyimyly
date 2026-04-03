@@ -5,15 +5,13 @@ import Header from "@/widgets/Header/Header";
 
 function App() {
   return (
-    <>
-      <div>
-        <Header/>
-        <main className="routing">
-          <Routing />
-        </main>
-        <Footer />
-      </div>
-    </>
+    <div>
+      <Header />
+      <main className="routing">
+        <Routing />
+      </main>
+      <Footer />
+    </div>
   );
 }
 
