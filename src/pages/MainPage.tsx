@@ -3,12 +3,13 @@ import BrandsPages from "./BrandsPages/BrandsPages";
 import { EventsPages } from "./EventsPages/EventsPages";
 import { NewsPages } from "./NewsPages/NewsPages";
 import { MovementPages } from "./Movement/ui/MovementPages";
+import Movement from "@/widgets/Movment/ui/Movement";
 
 const MainPage = () => {
   return (
     <div>
       <Banners />
-      <MovementPages />
+      <Movement />
       <EventsPages />
       <NewsPages />
       <BrandsPages />
