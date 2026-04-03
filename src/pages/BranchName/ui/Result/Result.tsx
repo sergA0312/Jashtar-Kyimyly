@@ -7,7 +7,7 @@ export function Result() {
     <section className={styles.resultSection}>
       <MultiContainer>
         <div className={styles.content}>
-          <Typography variant="h2" className={styles.title}  color="black">
+          <Typography variant="title" className={styles.title}  color="black">
           Результаты за 2023–2024 гг. :
           </Typography>
           <ul className={styles.list}>

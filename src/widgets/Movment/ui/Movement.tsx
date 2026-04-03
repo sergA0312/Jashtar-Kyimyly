@@ -40,11 +40,11 @@ const Movement = () => {
   // ];
   return (
     <MultiContainer>
-      <Typography className={style.title} variant="h6" color="black">
+      <Typography className={style.title} variant="title" color="black">
         {t('landing.aboutTheMovement')}
       </Typography>
 
-      <Typography className={style.bodyText} variant="bodyText" color="black">
+      <Typography className={style.bodyText} variant="desc" color="black">
       {data?.description}
       </Typography>
 
@@ -60,14 +60,14 @@ const Movement = () => {
                 </div>
                 <Typography
                   className={style.cardTitle}
-                  variant="h6"
+                  variant="card_title"
                   color="black"
                 >
                   Преимущество
                 </Typography>
                 <Typography
                   className={style.cardDescription}
-                  variant="bodyText"
+                  variant="desc"
                   color="black"
                 >
                   {card.text}
