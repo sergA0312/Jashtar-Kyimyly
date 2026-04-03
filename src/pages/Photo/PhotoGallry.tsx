@@ -64,6 +64,15 @@ export function PhotoGallry() {
         </div>
       </header>
 
+            {/* Пагинация */}
+            <div className={styles.pagination}>
+                <button
+                    className={styles.pageButton}
+                    onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                    disabled={currentPage === 1}
+                >   {/* @ts-ignore */}
+                    <IoIosArrowBack/>
+                </button>
       {/* Галерея */}
       <div className={styles.gallery}>
         {currentAlbums.map((album) => (
@@ -87,6 +96,14 @@ export function PhotoGallry() {
           <ChevronLeft />
         </button>
 
+                <button
+                    className={styles.pageButton}
+                    onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+                    disabled={currentPage === totalPages}
+                >   {/* @ts-ignore */}
+                    <IoIosArrowForward />
+                </button>
+            </div>
         <div className={styles.pageNumbers}>
           {Array.from({ length: totalPages }, (_, i) => (
             <button

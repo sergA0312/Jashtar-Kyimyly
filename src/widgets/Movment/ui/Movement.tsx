@@ -44,6 +44,43 @@ const Movement = () => {
     },
   ];
   return (
+    <MultiContainer>
+      <Typography className={style.title} variant="title" color="black">
+        {t('landing.aboutTheMovement')}
+      </Typography>
+
+      <Typography className={style.bodyText} variant="desc" color="black">
+      {data?.description}
+      </Typography>
+
+      <div className={style.cards}>
+        <div className={style.card}>
+          {advantages.map((card) => {
+            return (
+              <div key={card.id} className={style.cardItem}>
+                <div className={style.wrapperCircleOfCard}>
+                  <div className={style.circleOfCard}>
+                    <div></div>
+                  </div>
+                </div>
+                <Typography
+                  className={style.cardTitle}
+                  variant="card_title"
+                  color="black"
+                >
+                  Преимущество
+                </Typography>
+                <Typography
+                  className={style.cardDescription}
+                  variant="desc"
+                  color="black"
+                >
+                  {card.text}
+                </Typography>
+              </div>
+            );
+          })}
+        </div>
     <div className={`${style.movement} container`}>
       <Typography className={style.title} variant="h6" color="black">
         {t("landing.aboutTheMovement")}
