@@ -14,7 +14,7 @@ export default function BannerSlider() {
     {
       id: 1,
       image:
-        "https://theparkpeople.org/wp-content/uploads/2025/09/TPP-homepage-banner_2-2048x1222.jpg",
+        "https://www.cedarparktexas.gov/ImageRepository/Document?documentID=11249",
       title: "Banner",
       description:
         "Предварительные выводы неутешительны: высококачественный прототип будущего проекта создаёт необходимость включения ",
@@ -24,7 +24,17 @@ export default function BannerSlider() {
     {
       id: 2,
       image:
-        "https://theparkpeople.org/wp-content/uploads/2025/09/TPP-homepage-banner_2-2048x1222.jpg",
+        "https://www.cedarparktexas.gov/ImageRepository/Document?documentID=11249",
+      title: "Banner",
+      description:
+        "Предварительные выводы неутешительны: высококачественный прототип будущего проекта создаёт необходимость включения ",
+      cta_text: "Вступить в движение",
+      cta_link: "link",
+    },
+    {
+      id: 3,
+      image:
+        "https://www.cedarparktexas.gov/ImageRepository/Document?documentID=11249",
       title: "Banner",
       description:
         "Предварительные выводы неутешительны: высококачественный прототип будущего проекта создаёт необходимость включения ",

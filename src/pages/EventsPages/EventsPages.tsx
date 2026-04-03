@@ -27,28 +27,28 @@ export function EventsPages() {
           event: 1,
           title: "Photo",
           image:
-            "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGFya3xlbnwwfHwwfHx8MA%3D%3D",
+            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
         },
         {
           id: 2,
           event: 1,
           title: "Photo",
           image:
-            "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGFya3xlbnwwfHwwfHx8MA%3D%3D",
+            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
         },
         {
           id: 3,
           event: 1,
           title: "Photo",
           image:
-            "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGFya3xlbnwwfHwwfHx8MA%3D%3D",
+            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
         },
         {
           id: 5,
           event: 1,
           title: "Photo",
           image:
-            "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGFya3xlbnwwfHwwfHx8MA%3D%3D",
+            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
         },
       ],
     },
@@ -65,28 +65,28 @@ export function EventsPages() {
           event: 1,
           title: "Photo",
           image:
-            "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGFya3xlbnwwfHwwfHx8MA%3D%3D",
+            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
         },
         {
           id: 2,
           event: 1,
           title: "Photo",
           image:
-            "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGFya3xlbnwwfHwwfHx8MA%3D%3D",
+            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
         },
         {
           id: 3,
           event: 1,
           title: "Photo",
           image:
-            "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGFya3xlbnwwfHwwfHx8MA%3D%3D",
+            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
         },
         {
           id: 5,
           event: 1,
           title: "Photo",
           image:
-            "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGFya3xlbnwwfHwwfHx8MA%3D%3D",
+            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
         },
       ],
     },
@@ -103,7 +103,7 @@ export function EventsPages() {
           title: "Photo",
           event: 1,
           image:
-            "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGFya3xlbnwwfHwwfHx8MA%3D%3D",
+            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
         },
         {
           id: 2,
@@ -111,7 +111,7 @@ export function EventsPages() {
           event: 1,
 
           image:
-            "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGFya3xlbnwwfHwwfHx8MA%3D%3D",
+            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
         },
         {
           id: 3,
@@ -119,14 +119,14 @@ export function EventsPages() {
           event: 1,
 
           image:
-            "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGFya3xlbnwwfHwwfHx8MA%3D%3D",
+            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
         },
         {
           id: 5,
           event: 1,
           title: "Photo",
           image:
-            "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGFya3xlbnwwfHwwfHx8MA%3D%3D",
+            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
         },
       ],
     },
