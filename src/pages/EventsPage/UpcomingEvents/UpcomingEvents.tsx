@@ -1,58 +1,131 @@
-import React, { useRef, useEffect, useState } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import styles from "./style.module.scss";
 import Card from "@/widgets/Card/Card";
-import img from "../../../shared/assets/images/photo.png";
 import { Navigation } from "swiper/modules";
-import type { Swiper as SwiperClass } from "swiper";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { eventsStore } from "@/app/store/events/events";
 import { useNavigate } from "react-router-dom";
 
 const UpcomingEvents: React.FC = () => {
-  const prevRef = useRef<HTMLButtonElement>(null);
-  const nextRef = useRef<HTMLButtonElement>(null);
-  const [swiperInstance, setSwiperInstance] = useState<SwiperClass | null>(
-    null
-  );
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const navigate = useNavigate();
-  const { event, loading, error, fetchevents } = eventsStore();
-  const upcomingEvents = event.filter(
-    (event) => event.event_status === "upcoming"
-  );
 
-  useEffect(() => {
-    fetchevents();
-  }, []);
+  const data = [
+    {
+      id: 1,
+      title: "Название мероприятия",
+      description: "Описание мероприятия",
+      event_status: "2",
+      date: Date(),
+      images: [
+        {
+          id: 1,
+          event: 1,
+          title: "Photo",
+          image:
+            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: "Название мероприятия",
+      description: "Описание мероприятия",
+      event_status: "2",
+      date: Date(),
+      images: [
+        {
+          id: 2,
+          event: 2,
+          title: "Photo",
+          image:
+            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: "Название мероприятия",
+      description: "Описание мероприятия",
+      event_status: "2",
+      date: Date(),
+      images: [
+        {
+          id: 2,
+          event: 2,
+          title: "Photo",
+          image:
+            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: "Название мероприятия",
+      description: "Описание мероприятия",
+      event_status: "2",
+      date: Date(),
+      images: [
+        {
+          id: 2,
+          event: 2,
+          title: "Photo",
+          image:
+            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: "Название мероприятия",
+      description: "Описание мероприятия",
+      event_status: "2",
+      date: Date(),
+      images: [
+        {
+          id: 2,
+          event: 2,
+          title: "Photo",
+          image:
+            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: "Название мероприятия",
+      description: "Описание мероприятия",
+      event_status: "2",
+      date: Date(),
+      images: [
+        {
+          id: 2,
+          event: 2,
+          title: "Photo",
+          image:
+            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
+        },
+      ],
+    },
+  ];
 
-  if (loading) {
-    return <div className="loader"></div>;
-  }
-  if (error) {
-    return <p style={{ color: "red" }}>{error}</p>;
-  }
   return (
     <div className={styles.UpcomingEvents}>
       <h1 className={styles.title}>{t("events.upcomingEvents")}</h1>
 
       <div className={styles.swiperWrapper}>
-        <button ref={prevRef} className={styles.customArrow}>
+        <button className={`prev ${styles.customArrow}`}>
           <ChevronLeft />
         </button>
 
         <Swiper
           modules={[Navigation]}
-          onBeforeInit={(swiper: any) => {
-            if (typeof swiper.params.navigation !== "boolean") {
-              swiper.params.navigation = {
-                prevEl: prevRef.current!,
-                nextEl: nextRef.current!,
-              };
-            }
+          navigation={{
+            prevEl: ".prev",
+            nextEl: ".next",
           }}
           spaceBetween={20}
           breakpoints={{
@@ -60,7 +133,7 @@ const UpcomingEvents: React.FC = () => {
             769: { slidesPerView: 3.1 },
           }}
         >
-          {upcomingEvents.map((event) => (
+          {data.map((event) => (
             <SwiperSlide key={event.id} className={styles.slide}>
               <Card
                 onClick={() => navigate(`/events/${event.id}`)}
@@ -69,8 +142,7 @@ const UpcomingEvents: React.FC = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-
-        <button ref={nextRef} className={styles.customArrow}>
+        <button className={`next ${styles.customArrow}`}>
           <ChevronRight />
         </button>
       </div>

@@ -1,8 +1,9 @@
 import { Banners } from "@/widgets/Banners";
-import { Movement } from "@/widgets/Movment";
 import BrandsPages from "./BrandsPages/BrandsPages";
 import { EventsPages } from "./EventsPages/EventsPages";
 import { NewsPages } from "./NewsPages/NewsPages";
+import { MovementPages } from "./Movement/ui/MovementPages";
+import Movement from "@/widgets/Movment/ui/Movement";
 
 const MainPage = () => {
   return (

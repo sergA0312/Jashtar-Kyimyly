@@ -44,7 +44,7 @@ const Movement = () => {
     },
   ];
   return (
-    <MultiContainer>
+    <div className={`${style.movement} container`}>
       <Typography className={style.title} variant='title' color='black'>
         {t('landing.aboutTheMovement')}
       </Typography>
@@ -82,7 +82,8 @@ const Movement = () => {
           })}
         </div>
       </div>
-    </MultiContainer>
+      </div>
+
   );
 };
 

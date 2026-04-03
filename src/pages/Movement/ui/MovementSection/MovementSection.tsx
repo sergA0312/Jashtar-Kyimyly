@@ -8,13 +8,13 @@ import { useAboutMovementStore } from '@/app/store/about-movement/aboutMovementS
 export const MovementSection = () => {
   // const { data, loading, error, fetchAboutMovement } = useAboutMovementStore();
 
-  // useEffect(() => {
-  //   fetchAboutMovement();
-  // }, [fetchAboutMovement]);
+//   // useEffect(() => {
+//   //   fetchAboutMovement();
+//   // }, [fetchAboutMovement]);
 
-  // if (loading) {
-  //   return <div className={styles.loading}>Загрузка данных о движении...</div>;
-  // }
+//   // if (loading) {
+//   //   return <div className={styles.loading}>Загрузка данных о движении...</div>;
+//   // }
 
   // if (error) {
   //   return <div className={styles.error}>Ошибка при загрузке данных: {error}</div>;
@@ -25,9 +25,9 @@ export const MovementSection = () => {
   // }
 
   const MOVEMENT_DATA = {
-    title: 'О движении',
+    title: "О движении",
     description:
-      'Безусловно, высокотехнологичная концепция общественного уклада предопределяет высокую востребованность системы массового участия. Значимость этих проблем настолько очевидна, что синтетическое тестирование предопределяет высокую востребованность экспериментов, поражающих по своей масштабности и грандиозности. В своём стремлении повысить качество жизни, они забывают, что сложившаяся структура организации выявляет срочную потребность прогресса профессионального сообщества. ',
+      "Безусловно, высокотехнологичная концепция общественного уклада предопределяет высокую востребованность системы массового участия. Значимость этих проблем настолько очевидна, что синтетическое тестирование предопределяет высокую востребованность экспериментов, поражающих по своей масштабности и грандиозности. В своём стремлении повысить качество жизни, они забывают, что сложившаяся структура организации выявляет срочную потребность прогресса профессионального сообщества. ",
     imageRight: Imge1,
     ImageLeft: Imge2,
   };
@@ -50,12 +50,12 @@ export const MovementSection = () => {
             </Typography>
           </div>
 
-          <div className={styles.ImageWrapper}>
-            <img
-                src={MOVEMENT_DATA.imageRight}
-                alt='People laughing'
-                className={styles.bigImage}
-              />
+           <div className={styles.ImageWrapper}>
+             <img
+                 src={MOVEMENT_DATA.imageRight}
+                 alt='People laughing'
+                 className={styles.bigImage}
+               />
 
             
               <img
