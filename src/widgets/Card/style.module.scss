@@ -1,120 +1,45 @@
-.card{
-    background-color: #C1D3FC;
-    max-width: 404px;
-    padding: 10px;
-    border-radius: 20px;
+.card {
+  background-color: #c1d3fc;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 10px;
+  img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  .Footercard {
     display: flex;
-    flex-direction: column;
-    gap: 24px;
-    @media (max-width: 768px) {
-        padding: 8px;
-    border-radius: 13px; 
-    gap: 17px;
+    align-items: center;
+    justify-content: start;
+    padding-top: 10px;
+    gap: 10px;
+    .date {
+      width: clamp(37px, 8vw, 90px);
+      height: clamp(37px, 8vw, 90px);
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ebf1fe;
+      border-radius: 100%;
+      p {
+        font-size: clamp(8px, 1.8vw, 20px);
+      }
     }
-    @media (max-width: 480px) {
-        padding: 4px;
-    border-radius: 8px; 
-    gap: 5px;
+    .title {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      @media (max-width: 480px) {
+        gap: 5px;
+      }
+      h3 {
+        font-size: clamp(9px, 1.8vw, 20px);
+      }
+      p {
+        font-size: clamp(7px, 1.45vw, 16px);
+      }
     }
-    .itemCard{
-        width: 100%;
-height: 195px;
-        border-radius: 20px;
-        overflow: hidden;
-   @media (max-width: 768px) {
-    border-radius: 13px; 
-    }
-    @media (max-width: 480px) {
-        height: 135px;
-    border-radius: 8px; 
-    }
-    img{
-        cursor: pointer;
-        width: 100%;
-        object-position: center;
-        object-fit: cover;
-        height: 100%;
-    }
-    }
-    .Footercard{
-        width: 100%;
-        display: flex;
-        justify-content: start;
-        align-items: start;
-        gap: 23px;
-        margin-top: 5px;
-        @media (max-width: 480px) {
-            gap: 8px;
-        }
-        .date{
-            width: 100px;
-            height:85px;
-            //  padding: 30px 13px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 16px;
-            font-weight: 400;
-            background-color: #EBF1FE;
-            @media (max-width: 1024px) {
-                  width: 90px;
-            height:65px;
-                font-size: 14px;
-            }
-            @media (max-width: 768px) {
-                 width: 73px;
-            height:50px;
-                font-size: 9px;
-            }
-            @media (max-width: 480px) {
-                   width: 60px;
-            height:40px;
-                font-size: 6px;
-            }
-        }
-        div{
-            width: 100%;
-            height:70px;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            @media (max-width:768px) {
-                     height:50px;
-            }
-            @media (max-width:480px) {
-                     height:45px;
-            }
-            h3{
-                font-size: 20px;
-                font-weight: 400;
-                 @media (max-width: 1024px) {
-                font-size: 16px;
-            }
-                 @media (max-width: 768px) {
-                font-size: 12px;
-            }
-                 @media (max-width: 480px) {
-                font-size: 7px;
-            }
-            }
-            p{
-                 font-size: 16px;
-                font-weight: 400;
-                line-height: 20px;
-                      @media (max-width: 1024px) {
-                font-size: 13px;
-                 line-height: 14px;
-            }
-                 @media (max-width: 768px) {
-                font-size: 9px;
-                line-height: 10px;
-            }
-                 @media (max-width: 480px) {
-                font-size: 5.55px;
-                 line-height: 6px;
-            }
-            }
-        }
-    }
+  }
 }

@@ -1,4 +1,4 @@
-import { MultiContainer, Typography } from "@/shared/ui";
+import { Typography } from "@/shared/ui";
 import style from "./Movement.module.scss";
 import { useTranslation } from "react-i18next";
 import { useAboutMovementStore2 } from "@/app/store/aboutMovement/aboutMovement";
@@ -6,38 +6,43 @@ import { useEffect } from "react";
 import { useAdvantagesStore } from "@/app/store/advantages/advantages";
 
 const Movement = () => {
-    const { t, i18n } = useTranslation();
-    const changeLanguage = (lng: string) => i18n.changeLanguage(lng);
-    const {data, loading , error, fetchAboutMovement} = useAboutMovementStore2()
-    useEffect(() => {
-      fetchAboutMovement()
-    }, [])
-    const {data: advantages, loading: loader, error: advenError, fetchAdvantages} = useAdvantagesStore()
-    useEffect(() => {
-      fetchAdvantages()
-    },[])
-  // const cards = [
-  //   {
-  //     title: "Преимущество",
-  //     description:
-  //       "Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности",
-  //   },
-  //   {
-  //     title: "Преимущество",
-  //     description:
-  //       "Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности",
-  //   },
-  //   {
-  //     title: "Преимущество",
-  //     description:
-  //       "Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности",
-  //   },
-  //   {
-  //     title: "Преимущество",
-  //     description:
-  //       "Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности",
-  //   },
-  // ];
+  const { t, i18n } = useTranslation();
+  const changeLanguage = (lng: string) => i18n.changeLanguage(lng);
+  const { data, loading, error, fetchAboutMovement } = useAboutMovementStore2();
+  useEffect(() => {
+    fetchAboutMovement();
+  }, []);
+  const {
+    data: advantages,
+    loading: loader,
+    error: advenError,
+    fetchAdvantages,
+  } = useAdvantagesStore();
+  useEffect(() => {
+    fetchAdvantages();
+  }, []);
+  const cards = [
+    {
+      id: 1,
+      title: "Преимущество",
+      text: "Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности",
+    },
+    {
+      id: 2,
+      title: "Преимущество",
+      text: "Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности",
+    },
+    {
+      id: 3,
+      title: "Преимущество",
+      text: "Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности",
+    },
+    {
+      id: 4,
+      title: "Преимущество",
+      text: "Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности",
+    },
+  ];
   return (
     <MultiContainer>
       <Typography className={style.title} variant="title" color="black">
@@ -77,6 +82,7 @@ const Movement = () => {
           })}
         </div>
       </div>
+    </div>
     </MultiContainer>
   );
 };
