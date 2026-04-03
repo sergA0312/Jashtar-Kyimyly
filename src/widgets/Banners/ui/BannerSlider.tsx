@@ -10,13 +10,44 @@ import FirstSlide from "./Slides/FirstSlide";
 
 export default function BannerSlider() {
   const { banners, loading, error, fetchBanners } = BannerStore();
-
+  const banner = [
+    {
+      id: 1,
+      image:
+        "https://www.cedarparktexas.gov/ImageRepository/Document?documentID=11249",
+      title: "Banner",
+      description:
+        "Предварительные выводы неутешительны: высококачественный прототип будущего проекта создаёт необходимость включения ",
+      cta_text: "Вступить в движение",
+      cta_link: "link",
+    },
+    {
+      id: 2,
+      image:
+        "https://www.cedarparktexas.gov/ImageRepository/Document?documentID=11249",
+      title: "Banner",
+      description:
+        "Предварительные выводы неутешительны: высококачественный прототип будущего проекта создаёт необходимость включения ",
+      cta_text: "Вступить в движение",
+      cta_link: "link",
+    },
+    {
+      id: 3,
+      image:
+        "https://www.cedarparktexas.gov/ImageRepository/Document?documentID=11249",
+      title: "Banner",
+      description:
+        "Предварительные выводы неутешительны: высококачественный прототип будущего проекта создаёт необходимость включения ",
+      cta_text: "Вступить в движение",
+      cta_link: "link",
+    },
+  ];
   useEffect(() => {
     fetchBanners();
   }, [fetchBanners]);
 
-  if (loading) return <div className="loader"></div>;
-  if (error) return <div>Ошибка: {error}</div>;
+  // if (loading) return <div className="loader"></div>;
+  // if (error) return <div>Ошибка: {error}</div>;
 
   return (
     <div className={styles.bannerWrapper}>
@@ -27,9 +58,9 @@ export default function BannerSlider() {
         loop
         className={styles.bannerSwiper}
       >
-        {banners.map((banner) => (
+        {banner.map((banner) => (
           <SwiperSlide key={banner.id}>
-             <FirstSlide
+            <FirstSlide
               image={banner.image}
               title={banner.title}
               description={banner.description}
