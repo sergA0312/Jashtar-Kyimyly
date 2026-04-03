@@ -1,4 +1,4 @@
-import { Typography, MultiContainer } from "@/shared/ui";
+import { Typography } from "@/shared/ui";
 import style from "./Movement.module.scss";
 import { useTranslation } from "react-i18next";
 import { useAboutMovementStore2 } from "@/app/store/aboutMovement/aboutMovement";
@@ -45,42 +45,24 @@ const Movement = () => {
   ];
   return (
     <div className={`${style.movement} container`}>
-      <Typography className={style.title} variant="title" color="black">
+      <Typography className={style.title} variant="card_title" color="black">
         {t("landing.aboutTheMovement")}
       </Typography>
 
-      <Typography className={style.bodyText} variant="desc" color="black">
-        {data?.description}
+      <Typography className={style.bodyText} variant="card_title" color="black">
+        {t("landing.aboutTheMovementDescription")}
       </Typography>
 
       <div className={style.cards}>
-        <div className={style.card}>
-          {advantages.map((card) => {
-            return (
-              <div key={card.id} className={style.cardItem}>
-                <div className={style.wrapperCircleOfCard}>
-                  <div className={style.circleOfCard}>
-                    <div></div>
-                  </div>
-                </div>
-                <Typography
-                  className={style.cardTitle}
-                  variant="card_title"
-                  color="black"
-                >
-                  Преимущество
-                </Typography>
-                <Typography
-                  className={style.cardDescription}
-                  variant="desc"
-                  color="black"
-                >
-                  {card.text}
-                </Typography>
-              </div>
-            );
-          })}
-        </div>
+        {cards.map((card) => (
+          <div key={card.id} className={style.card}>
+            <div className={style.circleCard}>
+              <div></div>
+            </div>
+            <h4>Преимущество</h4>
+            <p>{card.text}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
