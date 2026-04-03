@@ -1,8 +1,8 @@
-import type { FC } from 'react';
-import { useEffect } from 'react';
-import styles from './MovementSection.module.scss';
-import { MultiContainer, Typography } from '@/shared/ui';
-import { useAboutMovementStore } from '@/app/store/about-movement/aboutMovementStore';
+import type { FC } from "react";
+import { useEffect } from "react";
+import styles from "./MovementSection.module.scss";
+import { MultiContainer, Typography } from "@/shared/ui";
+import { useAboutMovementStore } from "@/app/store/about-movement/aboutMovementStore";
 
 export const MovementSection: FC = () => {
   const { data, loading, error, fetchAboutMovement } = useAboutMovementStore();
@@ -16,7 +16,9 @@ export const MovementSection: FC = () => {
   }
 
   if (error) {
-    return <div className={styles.error}>Ошибка при загрузке данных: {error}</div>;
+    return (
+      <div className={styles.error}>Ошибка при загрузке данных: {error}</div>
+    );
   }
 
   if (!data) {
@@ -30,7 +32,11 @@ export const MovementSection: FC = () => {
           <Typography variant="h6" color="black" className={styles.title}>
             {data.title}
           </Typography>
-          <Typography variant="bodyText" color="black" className={styles.paragraph}>
+          <Typography
+            variant="bodyText"
+            color="black"
+            className={styles.paragraph}
+          >
             {data.description}
           </Typography>
           <div className={styles.imageWrapper}>
