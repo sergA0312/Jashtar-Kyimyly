@@ -1,9 +1,9 @@
-import { Typography } from "@/shared/ui";
-import style from "./Movement.module.scss";
-import { useTranslation } from "react-i18next";
-import { useAboutMovementStore2 } from "@/app/store/aboutMovement/aboutMovement";
-import { useEffect } from "react";
-import { useAdvantagesStore } from "@/app/store/advantages/advantages";
+import { Typography, MultiContainer } from '@/shared/ui';
+import style from './Movement.module.scss';
+import { useTranslation } from 'react-i18next';
+import { useAboutMovementStore2 } from '@/app/store/aboutMovement/aboutMovement';
+import { useEffect } from 'react';
+import { useAdvantagesStore } from '@/app/store/advantages/advantages';
 
 const Movement = () => {
   const { t, i18n } = useTranslation();
@@ -24,33 +24,33 @@ const Movement = () => {
   const cards = [
     {
       id: 1,
-      title: "Преимущество",
-      text: "Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности",
+      title: 'Преимущество',
+      text: 'Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности',
     },
     {
       id: 2,
-      title: "Преимущество",
-      text: "Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности",
+      title: 'Преимущество',
+      text: 'Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности',
     },
     {
       id: 3,
-      title: "Преимущество",
-      text: "Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности",
+      title: 'Преимущество',
+      text: 'Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности',
     },
     {
       id: 4,
-      title: "Преимущество",
-      text: "Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности",
+      title: 'Преимущество',
+      text: 'Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности',
     },
   ];
   return (
     <MultiContainer>
-      <Typography className={style.title} variant="title" color="black">
+      <Typography className={style.title} variant='title' color='black'>
         {t('landing.aboutTheMovement')}
       </Typography>
 
-      <Typography className={style.bodyText} variant="desc" color="black">
-      {data?.description}
+      <Typography className={style.bodyText} variant='desc' color='black'>
+        {data?.description}
       </Typography>
 
       <div className={style.cards}>
@@ -65,15 +65,15 @@ const Movement = () => {
                 </div>
                 <Typography
                   className={style.cardTitle}
-                  variant="card_title"
-                  color="black"
+                  variant='card_title'
+                  color='black'
                 >
                   Преимущество
                 </Typography>
                 <Typography
                   className={style.cardDescription}
-                  variant="desc"
-                  color="black"
+                  variant='desc'
+                  color='black'
                 >
                   {card.text}
                 </Typography>
@@ -82,7 +82,6 @@ const Movement = () => {
           })}
         </div>
       </div>
-    </div>
     </MultiContainer>
   );
 };
