@@ -18,10 +18,10 @@ export const Footer: FC = () => {
           {/* Brand Info */}
           <div className={styles.brandInfo}>
             <img src={logo} alt={t('footer.logo')} className={styles.logo} />
-            <Typography variant="bodyText" color="white" className={styles.copyright}>
+            <Typography variant="navigation" color="white" className={styles.copyright}>
               © 2025 {t('footer.allRights')}
             </Typography>
-            <Typography variant="caption" color="white" className={styles.policyLinks}>
+            <Typography variant="navigation" color="white" className={styles.policyLinks}>
               <a href="/privacy-policy">{t('footer.privacyPolicy')}</a> |{" "}
               <a href="/terms-of-service">{t('footer.termsOfService')}</a> |{" "}
               <a href="/cookies">{t('footer.cookiesSettings')}</a>
@@ -36,7 +36,7 @@ export const Footer: FC = () => {
                   {section.links.map((link, j) => (
                     <li key={j}>
                       <Link to={link.url} className={styles.navLink}>
-                        <Typography variant="bodyText" className={styles.text} color="white">
+                        <Typography variant="navigation" className={styles.text} color="white">
                           {t(`footer.${link.titleKey}`)}
                         </Typography>
                       </Link>
@@ -60,10 +60,10 @@ export const Footer: FC = () => {
           {/* Duplicate Brand Info for Mobile / Layout */}
           <img src={logo} alt={t('footer.logo')} className={styles.logo1} />
           <div className={styles.brandInfo1}>
-            <Typography variant="bodyText" color="white" className={styles.copyright1}>
+            <Typography variant="navigation" color="white" className={styles.copyright1}>
               © 2025 {t('footer.allRights')}
             </Typography>
-            <Typography variant="caption" color="white" className={styles.policyLinks1}>
+            <Typography variant="navigation" color="white" className={styles.policyLinks1}>
               <a href="/privacy-policy">{t('footer.privacyPolicy')}</a> |{" "}
               <a href="/terms-of-service">{t('footer.termsOfService')}</a> |{" "}
               <a href="/cookies">{t('footer.cookiesSettings')}</a>

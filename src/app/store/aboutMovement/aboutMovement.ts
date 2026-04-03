@@ -1,9 +1,9 @@
-import { create } from 'zustand';
-import { axiosInstance } from '@/app/api/apiclient';
+import { create } from "zustand";
+import { axiosInstance } from "@/app/api/apiclient";
 
 interface AboutMovement {
   id: number;
-  description: string
+  description: string;
 }
 
 interface AboutMovementState {
@@ -21,8 +21,8 @@ export const useAboutMovementStore2 = create<AboutMovementState>((set) => ({
   fetchAboutMovement: async () => {
     set({ loading: true, error: null });
     try {
-      const response = await axiosInstance.get('home/about-movement/');
-      
+      const response = await axiosInstance.get("home/about-movement/");
+
       const apiData = response.data[0];
 
       const transformedData = {
