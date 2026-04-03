@@ -1,5 +1,4 @@
 .footer {
-  margin-top: 15rem;
   background-color: #111111;
   color: #fff;
   padding: 40px 0px;
@@ -13,51 +12,52 @@
     }
   }
   @media (max-width: 480px) {
-    .brandInfo{display: none;}
+    .brandInfo {
+      display: none;
+    }
   }
-  .nav4{
+  .nav4 {
     display: none;
-    div{
+    div {
       display: flex;
       margin-top: 20px;
       margin-bottom: 20px;
       gap: 40px;
       justify-content: center;
       align-items: center;
-      button{
+      button {
         color: white;
         transition: all 0.3s ease;
         cursor: pointer;
         z-index: 1212;
-        &:hover{
-        color: #2E6CF4 !important;
+        &:hover {
+          color: #2e6cf4 !important;
         }
       }
     }
   }
-    @media (max-width: 480px) {
-        .nav4{
-          display: block;
-        }
-   }
-  .Footer_footerContent__0zAR1{
+  @media (max-width: 480px) {
+    .nav4 {
+      display: block;
+    }
+  }
+  .Footer_footerContent__0zAR1 {
     display: flex;
     flex-direction: column;
   }
   .logo {
     width: 152px;
     height: auto;
-   
   }
-.logo1{
+  .logo1 {
     width: 162px;
     margin: 0 auto;
-}
-@media (min-width: 480px) {
-  .logo1{
-    display: none;
   }
-}
+  @media (min-width: 480px) {
+    .logo1 {
+      display: none;
+    }
+  }
   .copyright {
     margin-top: 21rem;
     font-size: 14px;
@@ -88,7 +88,6 @@
 
   .footerNav {
     display: flex;
-    margin-top: 90px;
     gap: 40px;
     justify-content: flex-end;
     z-index: 12;
@@ -97,27 +96,29 @@
       justify-content: left;
     }
     @media (max-width: 480px) {
-       display: flex;
-       gap: 0px;
-        flex-wrap: nowrap;
+      display: flex;
+      align-items: start;
+      justify-content: center;
+      gap: 0px;
+      flex-wrap: nowrap;
     }
   }
 
   .navSection {
     @media (max-width: 480px) {
-       &:nth-child(3){
+      &:nth-child(3) {
         display: none;
-       }
-       &:nth-child(4){
+      }
+      &:nth-child(4) {
         display: none;
-       }
-       &:nth-child(5){
+      }
+      &:nth-child(5) {
         display: none;
-       }
-       &:nth-child(6){
+      }
+      &:nth-child(6) {
         display: none;
-       }
-     }
+      }
+    }
     .navList {
       list-style: none;
       margin: 0;
@@ -129,7 +130,7 @@
           margin-bottom: 0;
         }
         @media (max-width: 480px) {
-          .text{
+          .text {
             font-size: 16px;
           }
         }
@@ -173,9 +174,9 @@
     font-size: 12px;
     opacity: 0.7;
     line-height: 20px;
-  @media (max-width: 480px) {
-    font-size: 8px;
-  }
+    @media (max-width: 480px) {
+      font-size: 8px;
+    }
     a {
       color: white;
       text-decoration: none;
