@@ -61,25 +61,27 @@ export function Video() {
       {/* Хлебные крошки */}
       <div className={styles.breadcrumbs}>
         <Navpanel
-          text={t("VideoLibrary.home")}
+          text={String(t("VideoLibrary.home"))}
           link="/"
-          text2={t("VideoLibrary.media")}
+          text2={String(t("VideoLibrary.media"))}
           link2="/media"
-          text3={t("VideoLibrary.VideoLibrary")}
+          text3={String(t("VideoLibrary.VideoLibrary"))}
         />
       </div>
 
       {/* Заголовок */}
       <header className={styles.header}>
-        <h1 className={styles.title}>{t("VideoLibrary.VideoLibrary")}</h1>
+        <h1 className={styles.title}>
+          {String(t("VideoLibrary.VideoLibrary"))}
+        </h1>
 
         <div className={styles.buttons}>
           <button
             className={styles.button}
-            aria-label={t("VideoLibrary.selectDate")}
+            aria-label={String(t("VideoLibrary.selectDate"))}
           >
             <span className={styles.buttonText}>
-              {t("VideoLibrary.selectDate")}
+              {String(t("VideoLibrary.selectDate"))}
             </span>
             <ArrowRightIcon className={styles.buttonIcon} />
           </button>
@@ -87,10 +89,10 @@ export function Video() {
           <button
             className={styles.button}
             onClick={handleGoBack}
-            aria-label={t("VideoLibrary.goBack")}
+            aria-label={String(t("VideoLibrary.goBack"))}
           >
             <span className={styles.buttonText}>
-              {t("VideoLibrary.goBack")}
+              {String(t("VideoLibrary.goBack"))}
             </span>
             <ArrowRightIcon className={styles.buttonIcon} />
           </button>
@@ -118,7 +120,7 @@ export function Video() {
             className={styles.pageButton}
             onClick={handlePrevPage}
             disabled={currentPage === 1}
-            aria-label={t("VideoLibrary.previousPage")}
+            aria-label={String(t("VideoLibrary.previousPage"))}
           >
             <ArrowLeftIcon className={styles.pageIcon} />
           </button>
@@ -143,7 +145,7 @@ export function Video() {
             className={styles.pageButton}
             onClick={handleNextPage}
             disabled={currentPage === totalPages}
-            aria-label={t("VideoLibrary.nextPage")}
+            aria-label={String(t("VideoLibrary.nextPage"))}
           >
             <ArrowRightIcon className={styles.pageIcon} />
           </button>

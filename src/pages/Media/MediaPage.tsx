@@ -6,7 +6,7 @@ export function MediaPage() {
     const {t, i18n} = useTranslation()
     return (
         <div>
-            <Navpanel text={t('media.home')} link='/' text2={t('media.media')}/>
+            <Navpanel text={t('media.home') as string} link='/' text2={t('media.media') as string}/>
             <PhotoGallery />
             <VideoGallery />
         </div>

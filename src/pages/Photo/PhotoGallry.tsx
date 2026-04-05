@@ -45,7 +45,7 @@ export function PhotoGallry() {
     return (
       <div className={styles.loaderContainer}>
         <div className={styles.loader}></div>
-        <p>{t("PhotoGallery.loading")}</p>
+        <p>{t("PhotoGallery.loading", "Loading...")}</p>
       </div>
     );
   }
@@ -55,7 +55,7 @@ export function PhotoGallry() {
       <div className={styles.errorContainer}>
         <p className={styles.error}>{error}</p>
         <button onClick={() => fetchImages()} className={styles.retryButton}>
-          {t("PhotoGallery.retry")}
+          {String(t("PhotoGallery.retry"))}
         </button>
       </div>
     );
@@ -66,34 +66,36 @@ export function PhotoGallry() {
       {/* Навигация */}
       <div className={styles.breadcrumbs}>
         <Navpanel
-          text={t("PhotoGallery.home")}
+          text={String(t("PhotoGallery.home"))}
           link="/"
-          text2={t("PhotoGallery.media")}
+          text2={String(t("PhotoGallery.media"))}
           link2="/media"
-          text3={t("PhotoGallery.PhotoGallery")}
+          text3={String(t("PhotoGallery.PhotoGallery"))}
         />
       </div>
 
       {/* Заголовок */}
       <header className={styles.header}>
-        <h1 className={styles.title}>{t("PhotoGallery.PhotoGallery")}</h1>
+        <h1 className={styles.title}>
+          {String(t("PhotoGallery.PhotoGallery"))}
+        </h1>
         <div className={styles.buttons}>
           <button
             className={styles.button}
-            aria-label={t("PhotoGallery.selectDate")}
+            aria-label={String(t("PhotoGallery.selectDate"))}
           >
             <span className={styles.buttonText}>
-              {t("PhotoGallery.selectDate")}
+              {String(t("PhotoGallery.selectDate"))}
             </span>
             <ArrowRightIcon className={styles.buttonIcon} />
           </button>
           <button
             className={styles.button}
             onClick={handleGoBack}
-            aria-label={t("PhotoGallery.goBack")}
+            aria-label={String(t("PhotoGallery.goBack"))}
           >
             <span className={styles.buttonText}>
-              {t("PhotoGallery.goBack")}
+              {String(t("PhotoGallery.goBack"))}
             </span>
             <ArrowRightIcon className={styles.buttonIcon} />
           </button>
@@ -121,7 +123,7 @@ export function PhotoGallry() {
             className={styles.pageButton}
             onClick={handlePrevPage}
             disabled={currentPage === 1}
-            aria-label={t("PhotoGallery.previousPage")}
+            aria-label={String(t("PhotoGallery.previousPage"))}
           >
             <ArrowLeftIcon className={styles.pageIcon} />
           </button>
@@ -134,7 +136,7 @@ export function PhotoGallry() {
                   currentPage === i + 1 ? styles.active : ""
                 }`}
                 onClick={() => handlePageChange(i + 1)}
-                aria-label={`${t("PhotoGallery.page")} ${i + 1}`}
+                aria-label={`${String(t("PhotoGallery.page"))} ${i + 1}`}
                 aria-current={currentPage === i + 1 ? "page" : undefined}
               >
                 {i + 1}
@@ -146,7 +148,7 @@ export function PhotoGallry() {
             className={styles.pageButton}
             onClick={handleNextPage}
             disabled={currentPage === totalPages}
-            aria-label={t("PhotoGallery.nextPage")}
+            aria-label={String(t("PhotoGallery.nextPage"))}
           >
             <ArrowRightIcon className={styles.pageIcon} />
           </button>
