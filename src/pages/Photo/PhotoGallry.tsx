@@ -1,6 +1,6 @@
 import { AlbumCard } from "@/shared/ui/Media/MediaCard";
-import Navpanel from "@/widgets/Navpanel/Navpanel";
-import { ArrowRightIcon, ArrowLeftIcon } from "lucide-react";
+// import Navpanel from "@/widgets/Navpanel/Navpanel";
+import { ArrowRightIcon, ArrowLeftIcon, ChevronRight } from "lucide-react";
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./PhotoGallry.module.scss";
@@ -10,7 +10,7 @@ import { useImagesStore } from "@/app/store/Media/images";
 // Константы
 const ITEMS_PER_PAGE = 16;
 
-// Мок-данные для альбомов (если нужны)
+// Мок-данные для альбомов
 const albums = Array.from({ length: 42 }, (_, i) => ({
   id: i + 1,
   title: `Альбом ${i + 1}`,
@@ -40,6 +40,11 @@ export function PhotoGallry() {
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   const handleGoBack = () => navigate("/media");
 
+  // Обработчик клика на альбом
+  const handleAlbumClick = (albumId: number) => {
+    navigate(`/media/photo-gallery/${albumId}`);
+  };
+
   // Состояния загрузки и ошибки
   if (loading) {
     return (
@@ -60,18 +65,25 @@ export function PhotoGallry() {
       </div>
     );
   }
+  const handleGoHome = () => navigate("/");
+  const handleGoMedia = () => navigate("/media");
+  const handleGoPhotoGallery = () => navigate("/photoGallery");
 
   return (
     <div className={styles.container}>
       {/* Навигация */}
       <div className={styles.breadcrumbs}>
-        <Navpanel
-          text={String(t("PhotoGallery.home"))}
-          link="/"
-          text2={String(t("PhotoGallery.media"))}
-          link2="/media"
-          text3={String(t("PhotoGallery.PhotoGallery"))}
-        />
+        <span onClick={handleGoHome} className={styles.clickable}>
+          Главная
+        </span>
+        <ChevronRight size={14} />
+        <span onClick={handleGoMedia} className={styles.clickable}>
+          Медиа
+        </span>
+        <ChevronRight size={14} />
+        <span onClick={handleGoPhotoGallery} className={styles.clickable}>
+          Фотогалерея
+        </span>
       </div>
 
       {/* Заголовок */}
@@ -111,7 +123,7 @@ export function PhotoGallry() {
             event={album.event}
             imageUrl={album.imageUrl}
             count={album.count}
-            onClick={() => navigate(`/album/${album.id}`)}
+            onClick={() => handleAlbumClick(album.id)}
           />
         ))}
       </div>
