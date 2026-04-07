@@ -85,7 +85,7 @@
 }
 
 .buttonText {
-  font-family: 'Segoe UI', Helvetica, sans-serif;
+  font-family: "Segoe UI", Helvetica, sans-serif;
   font-weight: 400;
   color: var(--dark-blue-0);
   font-size: 1.125rem;
@@ -120,5 +120,37 @@
 
   @media (max-width: 480px) {
     gap: 1rem;
+  }
+}
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: #111111;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  transition: color 0.2s;
+
+  .clickable {
+    cursor: pointer;
+    color: #111111;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #0066cc;
+      text-decoration: underline;
+    }
+  }
+
+  .current {
+    color: #333;
+    font-weight: 500;
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+    color: #999;
   }
 }
