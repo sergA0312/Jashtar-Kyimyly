@@ -128,8 +128,8 @@ const UpcomingEvents: React.FC = () => {
             }}
             spaceBetween={20}
             breakpoints={{
-              0: { slidesPerView: 2.12 },
-              769: { slidesPerView: 3.1 },
+              0: { slidesPerView: 2 },
+              768: { slidesPerView: 3 },
             }}
           >
             {data.map((event) => (

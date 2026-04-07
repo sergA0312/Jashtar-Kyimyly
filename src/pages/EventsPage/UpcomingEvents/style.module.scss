@@ -3,15 +3,16 @@
     font-size: clamp(20px, 3.6vw, 40px);
     text-align: center;
     padding-bottom: 30px;
-    @media (max-width: 768px) {
-      font-size: 25px;
-    }
+    font-weight: 500;
+
     @media (max-width: 480px) {
-      font-size: 18px;
       padding-block: 30px;
     }
   }
   .content {
+    .swiper {
+      width: 100%;
+    }
     .swiperWrapper {
       position: relative;
       display: flex;
