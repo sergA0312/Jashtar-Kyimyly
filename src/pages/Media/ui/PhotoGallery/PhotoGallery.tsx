@@ -53,7 +53,7 @@ export const PhotoGallery: React.FC = () => {
     <div className={styles.container}>
       <header className={styles.header}>
         <h1 className={styles.title}>
-          {t("media.PhotoGallery") || "Фотогалерея"}
+          {(t("media.PhotoGallery") as string) || "Фотогалерея"}
         </h1>
 
         <button
@@ -61,7 +61,7 @@ export const PhotoGallery: React.FC = () => {
           className={styles.button}
         >
           <span className={styles.buttonText}>
-            {t("media.allPhoto") || "Все фото"}
+            {(t("media.allPhoto") as string) || "Все фото"}
           </span>
           <ArrowRightIcon className={styles.buttonIcon} />
         </button>
