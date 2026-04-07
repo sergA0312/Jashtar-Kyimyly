@@ -54,8 +54,6 @@ export function Video() {
   const handleNextPage = () =>
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   const handleGoBack = () => navigate("/media");
-  const handleGoHome = () => navigate("/");
-  const handleGoMedia = () => navigate("/media");
   const handleGoPhotoGallery = () => navigate("/photoGallery");
   return (
     <div className={styles.container}>

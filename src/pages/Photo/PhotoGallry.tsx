@@ -37,7 +37,7 @@ export function PhotoGallry() {
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   const handleGoHome = () => navigate("/");
   const handleGoMedia = () => navigate("/media");
-  const handleAlbumClick = (id: number) => navigate(`/media/albums/${id}`);
+  // const handleAlbumClick = (id: number) => navigate(`/media/albums/${id}`);
 
   // Обработчик клика на альбом
   const handleAlbumClick = (albumId: number) => {
@@ -52,18 +52,16 @@ export function PhotoGallry() {
         <p>{t("PhotoGallery.loading")}</p>
       </div>
     );
-  if (error)
-    return (
-      <div className={styles.errorContainer}>
-        <p>{error}</p>
-        <button onClick={() => fetchImages()} className={styles.retryButton}>
-          {t("PhotoGallery.retry")}
-        </button>
-      </div>
-    );
+    // if (error)
+    //   return (
+    //     <div className={styles.errorContainer}>
+    //       <p>{error}</p>
+    //       <button onClick={() => fetchImages()} className={styles.retryButton}>
+    //         {t("PhotoGallery.retry")}
+    //       </button>
+    //     </div>
+    //   );
   }
-  const handleGoHome = () => navigate("/");
-  const handleGoMedia = () => navigate("/media");
   const handleGoPhotoGallery = () => navigate("/photoGallery");
 
   return (
@@ -114,7 +112,9 @@ export function PhotoGallry() {
             {Array.from({ length: totalPages }, (_, i) => (
               <button
                 key={i + 1}
-                className={`${styles.pageNumber} ${currentPage === i + 1 ? styles.active : ""}`}
+                className={`${styles.pageNumber} ${
+                  currentPage === i + 1 ? styles.active : ""
+                }`}
                 onClick={() => handlePageChange(i + 1)}
               >
                 {i + 1}

@@ -1,6 +1,6 @@
 import { ArrowRightIcon, ChevronRight } from "lucide-react";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import styles from "./PhotoGallery.module.scss";
 import { PhotoCard } from "../PhotoCard/PhotoCard";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
