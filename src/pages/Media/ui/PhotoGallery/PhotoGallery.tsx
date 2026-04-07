@@ -47,29 +47,31 @@ const mockImages = [
 export const PhotoGallery: React.FC = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+
   const handleGoHome = () => navigate("/");
   const handleGoMedia = () => navigate("/media");
   const handleGoPhotoGallery = () => navigate("/photoGallery");
+
   return (
     <div className={styles.container}>
-      <header className={styles.header}>
-        <div className={styles.breadcrumbs}>
-          <span onClick={handleGoHome} className={styles.clickable}>
-            Главная
-          </span>
-          <ChevronRight size={14} />
-          <span onClick={handleGoMedia} className={styles.clickable}>
-            Медиа
-          </span>
-          <ChevronRight size={14} />
-          <span onClick={handleGoPhotoGallery} className={styles.clickable}>
-            Фотогалерея
-          </span>
-        </div>
+      <div className={styles.breadcrumbs}>
+        <span onClick={handleGoHome} className={styles.clickable}>
+          Главная
+        </span>
+        <ChevronRight size={14} />
+        <span onClick={handleGoMedia} className={styles.clickable}>
+          Медиа
+        </span>
+        <ChevronRight size={14} />
+        <span onClick={handleGoPhotoGallery} className={styles.clickable}>
+          Фотогалерея
+        </span>
+      </div>
+
+      <div className={styles.headerWrapper}>
         <h1 className={styles.title}>
           {(t("media.PhotoGallery") as string) || "Фотогалерея"}
         </h1>
-
         <button
           onClick={() => navigate("/photoGallery")}
           className={styles.button}
@@ -79,7 +81,7 @@ export const PhotoGallery: React.FC = () => {
           </span>
           <ArrowRightIcon className={styles.buttonIcon} />
         </button>
-      </header>
+      </div>
 
       <main className={styles.gallery}>
         {mockImages.slice(0, 6).map((item) => (

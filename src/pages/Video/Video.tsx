@@ -1,4 +1,4 @@
-import { ArrowRightIcon, ArrowLeftIcon } from "lucide-react";
+import { ArrowRightIcon, ArrowLeftIcon, ChevronRight } from "lucide-react";
 import { useState, useMemo } from "react";
 import styles from "./VideoGallry.module.scss";
 import { VideoCard } from "@/pages/Media/ui/VideoCard/VideoCard";
@@ -55,18 +55,23 @@ export function Video() {
   const handleNextPage = () =>
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   const handleGoBack = () => navigate("/media");
-
+  const handleGoHome = () => navigate("/");
+  const handleGoMedia = () => navigate("/media");
+  const handleGoPhotoGallery = () => navigate("/photoGallery");
   return (
     <div className={styles.container}>
-      {/* Хлебные крошки */}
       <div className={styles.breadcrumbs}>
-        <Navpanel
-          text={String(t("VideoLibrary.home"))}
-          link="/"
-          text2={String(t("VideoLibrary.media"))}
-          link2="/media"
-          text3={String(t("VideoLibrary.VideoLibrary"))}
-        />
+        <span onClick={handleGoHome} className={styles.clickable}>
+          Главная
+        </span>
+        <ChevronRight size={14} />
+        <span onClick={handleGoMedia} className={styles.clickable}>
+          Медиа
+        </span>
+        <ChevronRight size={14} />
+        <span onClick={handleGoPhotoGallery} className={styles.clickable}>
+          Фотогалерея
+        </span>
       </div>
 
       {/* Заголовок */}
