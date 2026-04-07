@@ -130,30 +130,34 @@
     .swiper-pagination {
       bottom: -35px !important; /* сместили точки ниже баннера */
     }
-
+  }
+}
+.bannerWrapper {
+  :global {
     .swiper-pagination-bullet {
       background: #2563eb;
       opacity: 0.5;
       transition: 0.3s;
       @media (max-width: 480px) {
-        width: 30px; // длина полоски
-        height: 3px; // толщина
+        width: 70px; // длина полоски
+        height: 4px; // толщина
         border-radius: 2px; // убираем круг
         background: #2563eb;
         opacity: 0.5;
         margin: 0 4px !important;
+        transition: 0.3s;
       }
     }
-
     .swiper-pagination-bullet-active {
       opacity: 1;
-      transform: scale(1.2);
+      transform: scale(1.1);
+      @media (max-width: 480px) {
+        opacity: 1;
+        transform: scaleX(1.1); // растягивается по ширине
+      }
     }
   }
 }
-.bannerWrapper {
-}
-
 .customPagination {
   margin-top: 20px; /* отступ снизу */
   text-align: center;
