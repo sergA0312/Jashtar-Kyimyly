@@ -103,8 +103,6 @@
     height: auto;
     padding: 22px;
 
-
-
     .downloadBtn {
       padding: 14px 30px;
     }
@@ -113,12 +111,13 @@
 
 @media (max-width: 480px) {
   .legalFrameworkSection {
-    width: 360px;
+    width: 100%;
     padding: 30px 0;
+    overflow: hidden;
   }
 
   .content {
-    margin: 0 16px;
+    margin: 0;
   }
 
   .title {
@@ -131,15 +130,16 @@
     padding-left: 10px;
     padding-right: 10px;
     gap: 20px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
   }
 
   .card {
-    width: 85%;
+    box-sizing: border-box;
+    width: 100%;
     height: auto;
     padding: 20px;
     gap: 6px;
-
-
 
     .downloadBtn {
       padding: 12px 24px;
