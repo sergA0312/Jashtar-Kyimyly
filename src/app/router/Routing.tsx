@@ -36,7 +36,7 @@ export default function Routing() {
     { link: "/media", page: <MediaPage />, id: 7 },
     { link: "/photoGallery", page: <PhotoGallry />, id: 8 },
     { link: "/videoGallery", page: <Video />, id: 9 },
-    { link: "/allbom", page: <Allbom />, id: 10 },
+    { link: "/media/albums/:albumId", page: <Allbom />, id: 10 },
     { link: "/register", page: <Register />, id: 11 },
     { link: "/login", page: <SignIn />, id: 12 },
     { link: "/profile", page: <Profile />, id: 13 },

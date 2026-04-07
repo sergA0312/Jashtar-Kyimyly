@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './Gallery.module.scss';
+import React from "react";
+import styles from "./Gallery.module.scss";
 
 interface GalleryItem {
   id: number;
@@ -19,11 +19,7 @@ export const Gallery: React.FC<GalleryProps> = ({ items }) => {
         {items.map((item) => (
           <div key={item.id} className={styles.card}>
             <div className={styles.imageWrapper}>
-              <img 
-                src={item.src} 
-                alt={item.alt}
-                className={styles.image}
-              />
+              <img src={item.src} alt={item.alt} className={styles.image} />
             </div>
             <div className={styles.cardContent}>
               <h3 className={styles.cardTitle}>{item.title}</h3>

@@ -1,13 +1,11 @@
-import { ArrowRightIcon, ArrowLeftIcon } from "lucide-react";
+import { ArrowRightIcon, ArrowLeftIcon, ChevronRight } from "lucide-react";
 import { useState, useMemo } from "react";
 import styles from "./VideoGallry.module.scss";
 import { VideoCard } from "@/pages/Media/ui/VideoCard/VideoCard";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import Navpanel from "@/widgets/Navpanel/Navpanel";
+// import Navpanel from "@/widgets/Navpanel/Navpanel";
 import vidioIMG from "@/shared/assets/images/vidioimg.png";
-
-// Константы
 const ITEMS_PER_PAGE = 9;
 
 // Функция для генерации мок-данных
@@ -48,7 +46,8 @@ export function Video() {
     const current = VideoData.slice(start, start + ITEMS_PER_PAGE);
     return { totalPages: total, currentVideos: current };
   }, [currentPage]);
-
+  const handleGoHome = () => navigate("/");
+  const handleGoMedia = () => navigate("/media");
   // Обработчики событий
   const handlePageChange = (page: number) => setCurrentPage(page);
   const handlePrevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
@@ -58,18 +57,20 @@ export function Video() {
 
   return (
     <div className={styles.container}>
-      {/* Хлебные крошки */}
       <div className={styles.breadcrumbs}>
-        <Navpanel
-          text={String(t("VideoLibrary.home"))}
-          link="/"
-          text2={String(t("VideoLibrary.media"))}
-          link2="/media"
-          text3={String(t("VideoLibrary.VideoLibrary"))}
-        />
+        <span onClick={handleGoHome} className={styles.clickable}>
+          {t("PhotoGallery.home") || "Главная"}
+        </span>
+        <ChevronRight size={14} />
+        <span onClick={handleGoMedia} className={styles.clickable}>
+          {t("PhotoGallery.media") || "Медиа"}
+        </span>
+        <ChevronRight size={14} />
+        <span className={styles.current}>
+          {t("PhotoGallery.PhotoGallery") || "Фотогалерея"}
+        </span>
       </div>
 
-      {/* Заголовок */}
       <header className={styles.header}>
         <h1 className={styles.title}>
           {String(t("VideoLibrary.VideoLibrary"))}
@@ -99,7 +100,6 @@ export function Video() {
         </div>
       </header>
 
-      {/* Галерея видео */}
       <div className={styles.gallery}>
         {currentVideos.map((video) => (
           <VideoCard
@@ -113,7 +113,6 @@ export function Video() {
         ))}
       </div>
 
-      {/* Пагинация */}
       {totalPages > 1 && (
         <div className={styles.pagination}>
           <button
