@@ -8,15 +8,16 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 16px;
+  font-size: 14px;
   color: #111111;
   margin-bottom: 40px;
   flex-wrap: wrap;
-  transition: color 0.2s;
+
   .clickable {
     cursor: pointer;
     color: #111111;
     transition: color 0.2s;
+
     &:hover {
       color: #0066cc;
       text-decoration: underline;
@@ -24,7 +25,7 @@
   }
 
   .current {
-    color: #333;
+    color: #111111;
     font-weight: 500;
   }
 
@@ -52,7 +53,7 @@
     padding: 8px 16px;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
     margin-bottom: 24px;
     color: #666;
     transition: all 0.2s;

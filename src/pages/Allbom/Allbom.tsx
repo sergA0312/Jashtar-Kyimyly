@@ -13,7 +13,7 @@ interface GalleryItem {
   title: string;
 }
 
-// Мок данные для названий альбомов
+// Названия альбомов
 const albumNames: { [key: string]: string } = {
   "1": "Природа Казахстана",
   "2": "Городские пейзажи",
@@ -21,6 +21,10 @@ const albumNames: { [key: string]: string } = {
   "4": "Спортивные события",
   "5": "Научные достижения",
   "6": "Молодежные форумы",
+  "7": "Выставки",
+  "8": "Концерты",
+  "9": "Фестивали",
+  "10": "Туризм",
 };
 
 export const Allbom = () => {
@@ -30,6 +34,7 @@ export const Allbom = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
+  // Получаем название альбома
   const albumTitle = albumNames[albumId || "1"] || `Альбом ${albumId}`;
 
   // Мок данные для фото
@@ -56,6 +61,7 @@ export const Allbom = () => {
 
   return (
     <div className={styles.main}>
+      {/* Хлебные крошки */}
       <div className={styles.breadcrumbs}>
         <span onClick={handleGoHome} className={styles.clickable}>
           Главная
@@ -77,8 +83,10 @@ export const Allbom = () => {
           <h1 className={styles.title}>{albumTitle}</h1>
         </header>
 
+        {/* Галерея */}
         <Gallery items={currentItems} />
 
+        {/* Пагинация */}
         {totalPages > 1 && (
           <Pagination
             currentPage={currentPage}

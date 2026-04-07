@@ -54,20 +54,22 @@ export function Video() {
   const handleNextPage = () =>
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   const handleGoBack = () => navigate("/media");
-
+  const handleGoHome = () => navigate("/");
+  const handleGoMedia = () => navigate("/media");
+  const handleGoPhotoGallery = () => navigate("/photoGallery");
   return (
     <div className={styles.container}>
       <div className={styles.breadcrumbs}>
         <span onClick={handleGoHome} className={styles.clickable}>
-          {t("PhotoGallery.home") || "Главная"}
+          Главная
         </span>
         <ChevronRight size={14} />
         <span onClick={handleGoMedia} className={styles.clickable}>
-          {t("PhotoGallery.media") || "Медиа"}
+          Медиа
         </span>
         <ChevronRight size={14} />
-        <span className={styles.current}>
-          {t("PhotoGallery.PhotoGallery") || "Фотогалерея"}
+        <span onClick={handleGoPhotoGallery} className={styles.clickable}>
+          Фотогалерея
         </span>
       </div>
 

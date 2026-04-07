@@ -1,4 +1,5 @@
 import { AlbumCard } from "@/shared/ui/Media/MediaCard";
+// import Navpanel from "@/widgets/Navpanel/Navpanel";
 import { ArrowRightIcon, ArrowLeftIcon, ChevronRight } from "lucide-react";
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +9,7 @@ import styles from "./PhotoGallry.module.scss";
 
 const ITEMS_PER_PAGE = 16;
 
-// Мок-данные
+// Мок-данные для альбомов
 const albums = Array.from({ length: 42 }, (_, i) => ({
   id: i + 1,
   title: `Альбом ${i + 1}`,
@@ -38,7 +39,13 @@ export function PhotoGallry() {
   const handleGoMedia = () => navigate("/media");
   const handleAlbumClick = (id: number) => navigate(`/media/albums/${id}`);
 
-  if (loading)
+  // Обработчик клика на альбом
+  const handleAlbumClick = (albumId: number) => {
+    navigate(`/media/photo-gallery/${albumId}`);
+  };
+
+  // Состояния загрузки и ошибки
+  if (loading) {
     return (
       <div className={styles.loaderContainer}>
         <div className={styles.loader}></div>
@@ -54,20 +61,24 @@ export function PhotoGallry() {
         </button>
       </div>
     );
+  }
+  const handleGoHome = () => navigate("/");
+  const handleGoMedia = () => navigate("/media");
+  const handleGoPhotoGallery = () => navigate("/photoGallery");
 
   return (
     <div className={styles.container}>
       <div className={styles.breadcrumbs}>
         <span onClick={handleGoHome} className={styles.clickable}>
-          {t("PhotoGallery.home") || "Главная"}
+          Главная
         </span>
         <ChevronRight size={14} />
         <span onClick={handleGoMedia} className={styles.clickable}>
-          {t("PhotoGallery.media") || "Медиа"}
+          Медиа
         </span>
         <ChevronRight size={14} />
-        <span className={styles.current}>
-          {t("PhotoGallery.PhotoGallery") || "Фотогалерея"}
+        <span onClick={handleGoPhotoGallery} className={styles.clickable}>
+          Фотогалерея
         </span>
       </div>
 

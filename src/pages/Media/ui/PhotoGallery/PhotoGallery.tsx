@@ -1,9 +1,9 @@
 import { ArrowRightIcon, ChevronRight } from "lucide-react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { PhotoCard } from "../PhotoCard/PhotoCard";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import styles from "./PhotoGallery.module.scss";
-import React from "react";
 
 const mockImages = [
   {
@@ -68,17 +68,20 @@ export const PhotoGallery: React.FC = () => {
         </span>
       </div>
 
-      <header className={styles.header}>
+      <div className={styles.headerWrapper}>
         <h1 className={styles.title}>
           {t("media.PhotoGallery") || "Фотогалерея"}
         </h1>
-        <button onClick={handleGoPhotoGallery} className={styles.button}>
+        <button
+          onClick={() => navigate("/photoGallery")}
+          className={styles.button}
+        >
           <span className={styles.buttonText}>
             {t("media.allPhoto") || "Все фото"}
           </span>
           <ArrowRightIcon className={styles.buttonIcon} />
         </button>
-      </header>
+      </div>
 
       <main className={styles.gallery}>
         {mockImages.map((item) => (
