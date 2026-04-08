@@ -1,9 +1,10 @@
 import { ArrowRightIcon, ChevronRight } from "lucide-react";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./PhotoGallery.module.scss";
 import { PhotoCard } from "../PhotoCard/PhotoCard";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useImagesStore } from "@/app/store/Media/images";
 
 const mockImages = [
   {
@@ -51,6 +52,12 @@ export const PhotoGallery: React.FC = () => {
   const handleGoHome = () => navigate("/");
   const handleGoMedia = () => navigate("/media");
   const handleGoPhotoGallery = () => navigate("/photoGallery");
+  const { fetchImages, imagesCards } = useImagesStore();
+  useEffect(() => {
+    fetchImages();
+  }, [fetchImages]);
+
+  console.log(imagesCards);
 
   return (
     <div className={styles.container}>

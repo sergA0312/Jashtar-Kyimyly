@@ -16,6 +16,19 @@ interface ImagesState {
   error: string | null;
   fetchImages: () => Promise<void>;
 }
+interface Album {
+  id: number;
+  title: string;
+  cover_image: string;
+  date: string;
+  photos_count: number;
+}
+
+interface MediaResponse {
+  id: number;
+  photo_title: string;
+  albums: Album[];
+}
 
 export const useImagesStore = create<ImagesState>((set) => ({
   imagesCards: [],
@@ -25,15 +38,14 @@ export const useImagesStore = create<ImagesState>((set) => ({
   fetchImages: async () => {
     set({ loading: true, error: null });
     try {
-      const response = await axiosInstance.get<ImageItem[]>("/content/images/");
+      const response = await axiosInstance.get<MediaResponse>("/media");
 
-      // Теперь TS знает, что item имеет тип ImageItem
-      const transformedData = response.data.map((item) => ({
-        id: item.id,
-        gallery: item.gallery,
-        image: item.image,
-        title: item.title ?? null,
-        date: item.date,
+      const transformedData = response.data.albums.map((album) => ({
+        id: album.id,
+        gallery: album.id,
+        image: album.cover_image,
+        title: album.title,
+        date: album.date,
       }));
 
       set({ imagesCards: transformedData, loading: false });
