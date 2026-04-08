@@ -48,7 +48,6 @@ const mockImages = [
 export const PhotoGallery: React.FC = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-
   const handleGoHome = () => navigate("/");
   const handleGoMedia = () => navigate("/media");
   const handleGoPhotoGallery = () => navigate("/photoGallery");
@@ -56,9 +55,6 @@ export const PhotoGallery: React.FC = () => {
   useEffect(() => {
     fetchImages();
   }, [fetchImages]);
-
-  console.log(imagesCards);
-
   return (
     <div className={styles.container}>
       <div className={styles.breadcrumbs}>
@@ -91,13 +87,13 @@ export const PhotoGallery: React.FC = () => {
       </div>
 
       <main className={styles.gallery}>
-        {mockImages.map((item) => (
+        {imagesCards?.map((item) => (
           <PhotoCard
             key={item.id}
             id={item.id}
             date={item.date}
             title={item.title}
-            imageUrl={item.image}
+            cover_image={item.cover_image}
           />
         ))}
       </main>

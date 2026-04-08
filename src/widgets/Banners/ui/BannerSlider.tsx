@@ -22,7 +22,7 @@ export default function BannerSlider() {
       clickable: true,
       dynamicBullets: false,
     }),
-    [],
+    []
   );
 
   // Состояния загрузки
@@ -78,7 +78,7 @@ export default function BannerSlider() {
         {banners.map((banner) => (
           <SwiperSlide key={banner.id}>
             <FirstSlide
-              image={banner.images?.[0]?.image || ""}
+              image={banner.images?.[0]?.image || "not found"}
               title={banner.title || ""}
               description={banner.description || ""}
               cta_text={banner.cta_text || ""}

@@ -31,18 +31,20 @@ const FirstSlide = ({
       }
     }
   };
-
   // Полный URL изображения (если приходит относительный)
   const getImageUrl = (url: string) => {
     if (!url) return funChildImage;
-    if (url.startsWith("http")) return url;
-    return `http://157.230.235.0${url}`;
+    if (url.startsWith("http")) return decodeURIComponent(url); // <-- кодируем URL
+    return encodeURI(
+      `http://157.230.235.0${url.startsWith("/") ? "" : "/"}${url}`
+    );
   };
 
   const handleImageError = () => {
     console.error("Failed to load image:", image);
     setImgError(true);
   };
+  console.log(getImageUrl(image));
 
   return (
     <div className={styles.banner}>
