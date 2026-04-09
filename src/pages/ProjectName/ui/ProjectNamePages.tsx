@@ -9,15 +9,6 @@ import { useParams } from "react-router-dom";
 
 export function ProjectNamePages() {
   const { t } = useTranslation();
-  const { id } = useParams<{ id: string }>();
-  const { data, fetchProjectById } = useDetailProjectStore();
-
-  useEffect(() => {
-    if (id) {
-      fetchProjectById(Number(id));
-    }
-  }, [id, fetchProjectById]);
-  console.log(data);
 
   return (
     <div>
