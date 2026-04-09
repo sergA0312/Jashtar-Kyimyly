@@ -22,9 +22,9 @@ interface Events {
 interface EventItem {
   id: number;
   title: string;
-  data: string; // вместо date
-  image: string; // вместо images
-  short_text: string; // вместо description
+  data: string;
+  image: string;
+  short_text: string;
 }
 
 type CardItem = Events | EventItem;
@@ -45,7 +45,13 @@ function Card({ item, onClick }: CardProps) {
   // Получение изображения
   const getImageUrl = () => {
     if (isNewFormat(item)) {
-      return item.image;
+      // Для нового формата из API
+      console.log("Новый формат, image:", item.image);
+      return item.image || defaultImg;
+    } else {
+      // Для старого формата
+      console.log("Старый формат, images:", item.images);
+      return item.images?.[0]?.image || defaultImg;
     }
     return item.images?.[0]?.image || "";
   };
@@ -94,12 +100,16 @@ function Card({ item, onClick }: CardProps) {
     }
   };
 
+  const imageUrl = getImageUrl();
+  console.log("Итоговый URL изображения:", imageUrl);
+
   return (
     <div className={styles.card} onClick={handleClick}>
       <img
-        src={getImageUrl()}
+        src={imageUrl}
         alt={item.title}
         onError={(e) => {
+          console.error("Ошибка загрузки изображения:", imageUrl);
           (e.target as HTMLImageElement).src = defaultImg;
         }}
       />

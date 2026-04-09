@@ -1,39 +1,51 @@
-import React from "react";
-import "./style.scss";
-import img from "../../../shared/assets/images/image.png";
-import { IoCalendarOutline } from "react-icons/io5";
+// src/pages/NewsPage/NewsHeadline/NewsHeadline.tsx
+import styles from "./style.scss";
+import defaultImg from "@/shared/assets/images/photo.png";
+import { Calendar } from "lucide-react";
 
 interface NewsHeadlineProps {
   newsdetail: {
     id: number;
-    title: string;
+    title?: string;
+    data: string;
+    news_image: string;
     description: string;
-    date: string;
-    image: string;
   };
 }
+
 function NewsHeadline({ newsdetail }: NewsHeadlineProps) {
-  const formattedDate = newsdetail.date
-    ? new Date(newsdetail.date).toLocaleDateString("ru-RU", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-      })
-    : "";
+  const formatDate = (dateString: string) => {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    return date.toLocaleDateString("ru-RU", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  };
+
   return (
-    <div className="newsheadline container">
-      <h1>{newsdetail.title}</h1>
-      <div className="head-news">
-        <IoCalendarOutline />
-        <p>{formattedDate}</p>
-      </div>
-      <img className="news-img" src={newsdetail.image} alt="" />
-      <div className="des-news">
-        <p>{newsdetail.description}</p>
-        {/* <p>
-              Ясность нашей позиции очевидна: глубокий уровень погружения способствует подготовке и реализации форм воздействия. Значимость этих проблем настолько очевидна, что синтетическое тестирование прекрасно подходит для реализации благоприятных перспектив.  
-            </p>
-            <p>Не следует, однако, забывать, что новая модель организационной деятельности предполагает независимые способы реализации позиций, занимаемых участниками в отношении поставленных задач. Как уже неоднократно упомянуто, акционеры крупнейших компаний и по сей день остаются уделом либералов, которые жаждут быть представлены в исключительно положительном свете. Но социально-экономическое развитие не оставляет шанса для существующих финансовых и административных условий. В рамках спецификации современных стандартов, непосредственные участники технического прогресса набирают популярность среди определенных слоев населения, а значит, должны быть рассмотрены исключительно в разрезе маркетинговых и финансовых предпосылок. Являясь всего лишь частью общей картины, элементы политического процесса ассоциативно распределены по отраслям. Являясь всего лишь частью общей картины, ключевые особенности структуры проекта призваны к ответу.</p> */}
+    <div className={styles.newsHeadline}>
+      <div className="container">
+        <div className={styles.headlineContent}>
+          <div className={styles.headlineImage}>
+            <img
+              src={newsdetail.news_image || defaultImg}
+              alt={newsdetail.title || "Новость"}
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = defaultImg;
+              }}
+            />
+          </div>
+          <div className={styles.headlineText}>
+            <div className={styles.date}>
+              <Calendar size={16} />
+              <span>{formatDate(newsdetail.data)}</span>
+            </div>
+            <h1>{newsdetail.title || "Новость"}</h1>
+            <p>{newsdetail.description}</p>
+          </div>
+        </div>
       </div>
     </div>
   );

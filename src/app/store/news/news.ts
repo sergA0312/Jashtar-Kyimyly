@@ -1,52 +1,48 @@
+// src/app/store/news/news.ts
 import { create } from "zustand";
 import { axiosInstance } from "@/app/api/apiclient";
-import { AxiosError } from "axios";
 
-export interface News {
+export interface NewsItem {
   id: number;
-  title: string;
+  data: string;
+  news_image: string;
   description: string;
-  date: string;
-  image: string;
+}
+
+export interface NewsResponse {
+  news: string;
+  news_list: NewsItem[];
 }
 
 interface NewsState {
-  news: News[];
+  news: NewsResponse | null;
   loading: boolean;
   error: string | null;
   fetchnews: () => Promise<void>;
 }
 
 export const NewsStore = create<NewsState>((set) => ({
-  news: [],
+  news: null,
   loading: false,
   error: null,
 
   fetchnews: async () => {
     set({ loading: true, error: null });
     try {
-      // axiosInstance уже содержит Accept-Language через setLanguage
-      const response = await axiosInstance.get<News[]>("/home");
-      console.log(response);
-
-      // Преобразуем данные при необходимости
-      const transformedData = response.data.map((item) => ({
-        id: item.id,
-        title: item.title,
-        description: item.description,
-        date: item.date,
-        image: item.image,
-      }));
-
-      set({ news: transformedData });
-    } catch (err) {
-      const error = err as AxiosError<{ message: string }>;
+      const response = await axiosInstance.get("/home/");
       set({
-        error: error.response?.data?.message || "Что-то пошло не так",
+        news: {
+          news: response.data.news || "Новости",
+          news_list: response.data.news_list || [],
+        },
+        loading: false,
       });
-      console.error("Ошибка при загрузке новостей:", error);
-    } finally {
-      set({ loading: false });
+    } catch (err: any) {
+      set({
+        news: null,
+        loading: false,
+        error: err.message || "Ошибка загрузки новостей",
+      });
     }
   },
 }));

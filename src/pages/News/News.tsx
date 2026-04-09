@@ -1,70 +1,31 @@
-// News.tsx
+// src/pages/News/News.tsx
 import Navpanel from "@/widgets/Navpanel/Navpanel";
 import NewsCard from "@/widgets/NewsCard/NewsCard";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
-import img from "../../shared/assets/images/photo.png";
 import styles from "./style.module.scss";
 import { useTranslation } from "react-i18next";
 import { NewsStore } from "@/app/store/news/news";
-import { NewsDetailStore } from "@/app/store/news/newsDetail";
 import { useNavigate } from "react-router-dom";
-// interface New {
-//   id: number
-//   img: string
-//   title: string
-//   description: string
-// }
 
 function News() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const navigate = useNavigate();
-  // const Data: New[] = Array.from({ length: 95 }, (_, i) => ({
-  //   id: i + 1,
-  //   img: img,
-  //   title: `Событие номер ${i + 1}`,
-  //   description: 'Описание Описание Описание Описание Описание Описание Описание',
-  // }))
-  // const { news, loading, error, fetchnews } = NewsStore();
-  // useEffect(() => {
-  //   fetchnews();
-  // }, [fetchnews]);
-  // const { fetchNewsDetail } = NewsDetailStore();
-  const data = [
-    {
-      id: 1,
-      image:
-        "https://groups.google.com/group/digital-services-2024/attach/25a9aa043ccfb/6.jpg?part=0.1&view=1",
-      title: "Как уже неоднократно упомянуто",
-      description:
-        "Как уже неоднократно упомянуто, интерактивные прототипы, вне зависимости от их уровня, должны быть преданы социально-демократической анафеме.",
-      date: Date(),
-    },
-    {
-      id: 2,
-      image:
-        "https://groups.google.com/group/digital-services-2024/attach/25a9aa043ccfb/6.jpg?part=0.1&view=1",
-      title: "Как уже неоднократно упомянуто",
-      description:
-        "Как уже неоднократно упомянуто, интерактивные прототипы, вне зависимости от их уровня, должны быть преданы социально-демократической анафеме.",
-      date: Date(),
-    },
-    {
-      id: 3,
-      image:
-        "https://groups.google.com/group/digital-services-2024/attach/25a9aa043ccfb/6.jpg?part=0.1&view=1",
-      title: "Как уже неоднократно упомянуто",
-      description:
-        "Как уже неоднократно упомянуто, интерактивные прототипы, вне зависимости от их уровня, должны быть преданы социально-демократической анафеме.",
-      date: Date(),
-    },
-  ];
+  const { news, loading, error, fetchnews } = NewsStore();
+
   const pageSize = 12;
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(data.length / pageSize);
 
+  useEffect(() => {
+    fetchnews();
+  }, [fetchnews]);
+
+  // Получаем данные из API
+  const newsList = news?.news_list || [];
+
+  const totalPages = Math.ceil(newsList.length / pageSize);
   const startIndex = (currentPage - 1) * pageSize;
-  const currentEvents = data.slice(startIndex, startIndex + pageSize);
+  const currentNews = newsList.slice(startIndex, startIndex + pageSize);
 
   const getPaginationRange = () => {
     let range: (number | string)[] = [];
@@ -84,23 +45,47 @@ function News() {
     return range;
   };
 
+  if (loading) {
+    return (
+      <div className={`${styles.NewsPage}`}>
+        <Navpanel link="/" text={t("news.home")} text2={t("news.news")} />
+        <h1>{t("news.news")}</h1>
+        <div className="container">
+          <div className={styles.loader}>Загрузка...</div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={`${styles.NewsPage}`}>
+        <Navpanel link="/" text={t("news.home")} text2={t("news.news")} />
+        <h1>{t("news.news")}</h1>
+        <div className="container">
+          <div className={styles.error}>Ошибка: {error}</div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className={`${styles.NewsPage} `}>
+    <div className={`${styles.NewsPage}`}>
       <Navpanel link="/" text={t("news.home")} text2={t("news.news")} />
       <h1>{t("news.news")}</h1>
       <div className="container">
         <div className={styles.eventsArchive2}>
-          {currentEvents.map((event) => (
+          {currentNews.map((newsItem) => (
             <NewsCard
-              onClick={() => navigate(`/news/${event.id}/`)}
-              key={event.id}
-              item={event}
+              onClick={() => navigate(`/news/${newsItem.id}`)}
+              key={newsItem.id}
+              item={newsItem}
             />
           ))}
         </div>
       </div>
 
-      {/* 👉 Пагинация */}
+      {/* Пагинация */}
       {totalPages > 1 && (
         <div className={styles.pagination}>
           <button
@@ -123,7 +108,7 @@ function News() {
               >
                 {page}
               </button>
-            )
+            ),
           )}
 
           <button
