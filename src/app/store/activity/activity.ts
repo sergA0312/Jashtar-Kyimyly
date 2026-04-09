@@ -2,37 +2,59 @@
 import { create } from "zustand";
 import { axiosInstance } from "@/app/api/apiclient";
 
-interface Activity {
+export interface ActivityItem {
   id: number;
   title: string;
-  description: string;
+  short_description: string;
+  full_description: string;
   image: string;
-  color: string;
+  instagram_url: string | null;
+  telegram_url: string | null;
+}
+
+export interface ActivityBlock {
+  id: number;
+  title: string;
+  items: ActivityItem[];
 }
 
 interface ActivityState {
-  activities: Activity[];
+  data: ActivityBlock | null;
   loading: boolean;
   error: string | null;
   fetchActivities: () => Promise<void>;
 }
 
 export const useActivityStore = create<ActivityState>((set) => ({
-  activities: [],
+  data: null,
   loading: false,
   error: null,
 
   fetchActivities: async () => {
     set({ loading: true, error: null });
+
     try {
-      const response = await axiosInstance.get("/directions");
-      console.log(response.data);
+      const response = await axiosInstance.get<ActivityBlock>("/directions");
+      const sortedItems = (response.data.items || []).sort(
+        (a, b) => a.id - b.id
+      );
 
-      const transformedData = response.data;
-
-      set({ activities: transformedData, loading: false });
+      set({
+        data: {
+          id: response.data.id,
+          title: response.data.title,
+          items: sortedItems,
+        },
+        loading: false,
+      });
     } catch (err: any) {
-      set({ activities: [], loading: false, error: err.message });
+      console.error("Ошибка при загрузке направлений:", err.message);
+
+      set({
+        data: null,
+        loading: false,
+        error: err.message,
+      });
     }
   },
 }));

@@ -14,8 +14,6 @@ export const PhotoCard: React.FC<PhotoCardProps> = ({
   title,
   cover_image,
 }) => {
-  console.log(cover_image);
-
   return (
     <article className={styles.card}>
       <div className="relative">
