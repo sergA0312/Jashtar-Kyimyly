@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./style.module.scss";
 import defaultImg from "../../shared/assets/images/photo.png";
 import { useNavigate } from "react-router-dom";
+
 interface Images {
   id: number;
   event: number;
@@ -16,31 +17,99 @@ interface Events {
   event_status: string;
   images: Images[];
 }
+
+// Новый тип из API
+interface EventItem {
+  id: number;
+  title: string;
+  data: string; // вместо date
+  image: string; // вместо images
+  short_text: string; // вместо description
+}
+
+type CardItem = Events | EventItem;
+
 interface CardProps {
-  item: Events;
+  item: CardItem;
   onClick?: () => void;
 }
 
 function Card({ item, onClick }: CardProps) {
   const navigate = useNavigate();
-  const formattedDate = item.date
-    ? new Date(item.date).toLocaleDateString("ru-RU", {
+
+  // Функция для проверки типа item
+  const isNewFormat = (item: CardItem): item is EventItem => {
+    return "data" in item && "short_text" in item;
+  };
+
+  // Получение изображения
+  const getImageUrl = () => {
+    if (isNewFormat(item)) {
+      return item.image;
+    }
+    return item.images?.[0]?.image || defaultImg;
+  };
+
+  // Получение заголовка
+  const getTitle = () => {
+    const title = item.title;
+    return title.length > 22 ? `${title.slice(0, 22)}...` : title;
+  };
+
+  // Получение описания
+  const getDescription = () => {
+    let description = "";
+    if (isNewFormat(item)) {
+      description = item.short_text;
+    } else {
+      description = item.description;
+    }
+    return description.length > 50
+      ? `${description.slice(0, 50)}...`
+      : description;
+  };
+
+  // Получение даты
+  const getDate = () => {
+    if (isNewFormat(item)) {
+      return item.data;
+    }
+    return item.date;
+  };
+
+  // Форматирование даты
+  const formattedDate = getDate()
+    ? new Date(getDate()!).toLocaleDateString("ru-RU", {
         day: "2-digit",
         month: "2-digit",
       })
     : "";
+
+  // Обработчик клика
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    } else {
+      navigate(`/events/${item.id}/`);
+    }
+  };
+
   return (
-    <div className={styles.card}>
-      {item.images.slice(0, 1).map((img) => (
-        <img key={img.id} onClick={onClick} src={img.image} alt={item.title} />
-      ))}
+    <div className={styles.card} onClick={handleClick}>
+      <img
+        src={getImageUrl()}
+        alt={item.title}
+        onError={(e) => {
+          (e.target as HTMLImageElement).src = defaultImg;
+        }}
+      />
       <div className={styles.Footercard}>
         <div className={styles.date}>
           <p>{formattedDate}</p>
         </div>
         <div className={styles.title}>
-          <h3>{item.title.slice(0, 22)}...</h3>
-          <p>{item.description.slice(0, 50)}...</p>
+          <h3>{getTitle()}</h3>
+          <p>{getDescription()}</p>
         </div>
       </div>
     </div>

@@ -1,140 +1,115 @@
-// EventsArchive.tsx
-import Card from "@/widgets/Card/Card";
-import React, { useEffect } from "react";
-import img from "../../../shared/assets/images/photo.png";
-import "./style.scss";
-import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import { eventsStore } from "@/app/store/events/events";
+import Card from "@/widgets/Card/Card";
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
-function EventsArchive() {
-  const usenavigate = useNavigate();
-  const { t, i18n } = useTranslation();
+export function EventsArchive() {
+  const navigate = useNavigate();
+  const { t } = useTranslation();
   const { event, loading, error, fetchevents } = eventsStore();
-  const PastEvents = event.filter((event) => event.event_status === "past");
-  //  useEffect(() => {
-  //    fetchevents();
-  //  }, []);
-  //   if (loading) {
-  //    return <div className='loader'></div>;
-  //  }
-  //  if (error) {
-  //    return <p style={{ color: "red" }}>{error}</p>;
-  //  }
-  const data = [
-    {
-      id: 1,
-      title: "Название мероприятия",
-      description: "Описание мероприятия",
-      event_status: "2",
-      date: Date(),
-      images: [
-        {
-          id: 1,
-          event: 1,
-          title: "Photo",
-          image:
-            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Название мероприятия",
-      description: "Описание мероприятия",
-      event_status: "2",
-      date: Date(),
-      images: [
-        {
-          id: 2,
-          event: 2,
-          title: "Photo",
-          image:
-            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: "Название мероприятия",
-      description: "Описание мероприятия",
-      event_status: "2",
-      date: Date(),
-      images: [
-        {
-          id: 2,
-          event: 2,
-          title: "Photo",
-          image:
-            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
-        },
-      ],
-    },
-    {
-      id: 4,
-      title: "Название мероприятия",
-      description: "Описание мероприятия",
-      event_status: "2",
-      date: Date(),
-      images: [
-        {
-          id: 2,
-          event: 2,
-          title: "Photo",
-          image:
-            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
-        },
-      ],
-    },
-    {
-      id: 5,
-      title: "Название мероприятия",
-      description: "Описание мероприятия",
-      event_status: "2",
-      date: Date(),
-      images: [
-        {
-          id: 2,
-          event: 2,
-          title: "Photo",
-          image:
-            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
-        },
-      ],
-    },
-    {
-      id: 6,
-      title: "Название мероприятия",
-      description: "Описание мероприятия",
-      event_status: "2",
-      date: Date(),
-      images: [
-        {
-          id: 2,
-          event: 2,
-          title: "Photo",
-          image:
-            "https://www.gem-center.ru/data/image/NGA/Conf2025-440x300.jpg",
-        },
-      ],
-    },
-  ];
-  return (
-    <div className="events container">
-      <div className="events-text">
-        <h1>{t("events.eventArchive")}</h1>
-        <button onClick={() => usenavigate("/eventsArchivePage")}>
-          {t("events.button")}
-        </button>
+
+  useEffect(() => {
+    fetchevents();
+  }, [fetchevents]);
+
+  const eventsList = event?.events_list || [];
+
+  // Фильтруем прошедшие мероприятия
+  const pastEvents = eventsList.filter((eventItem) => {
+    if (!eventItem.data) return false;
+    const eventDate = new Date(eventItem.data);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return eventDate < today;
+  });
+
+  if (loading) {
+    return (
+      <div className="container">
+        <div style={{ textAlign: "center", padding: "40px" }}>Загрузка...</div>
       </div>
-      <div className="EventsArchive">
-        {data.map((event) => (
-          <Card
-            onClick={() => usenavigate(`/events/${event.id}/`)}
-            key={event.id}
-            item={event}
-          />
-        ))}
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container">
+        <div style={{ textAlign: "center", padding: "40px", color: "red" }}>
+          Ошибка: {error}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="container">
+      <div style={{ padding: "40px 0" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "30px",
+          }}
+        >
+          <h1 style={{ fontSize: "32px", fontWeight: "700" }}>
+            {t("events.archive") || "Архив мероприятий"}
+          </h1>
+          <button
+            onClick={() => navigate("/events")}
+            style={{
+              padding: "10px 24px",
+              background: "transparent",
+              border: "2px solid #0066cc",
+              color: "#0066cc",
+              borderRadius: "8px",
+              cursor: "pointer",
+              fontSize: "16px",
+              fontWeight: "500",
+            }}
+          >
+            {t("events.upcoming") || "Актуальные мероприятия"}
+          </button>
+        </div>
+
+        {pastEvents.length === 0 ? (
+          <div style={{ textAlign: "center", padding: "60px 20px" }}>
+            <p style={{ color: "#999", fontSize: "18px" }}>
+              Нет прошедших мероприятий
+            </p>
+          </div>
+        ) : (
+          <>
+            <div
+              style={{
+                marginBottom: "20px",
+                padding: "10px",
+                background: "#f5f5f5",
+                borderRadius: "8px",
+              }}
+            >
+              <span style={{ color: "#666", fontSize: "14px" }}>
+                Всего в архиве: {pastEvents.length}
+              </span>
+            </div>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, 1fr)",
+                gap: "30px",
+              }}
+            >
+              {pastEvents.map((eventItem) => (
+                <Card
+                  key={eventItem.id}
+                  item={eventItem}
+                  onClick={() => navigate(`/events/${eventItem.id}/`)}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
