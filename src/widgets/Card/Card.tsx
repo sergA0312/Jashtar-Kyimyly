@@ -47,7 +47,7 @@ function Card({ item, onClick }: CardProps) {
     if (isNewFormat(item)) {
       return item.image;
     }
-    return item.images?.[0]?.image || defaultImg;
+    return item.images?.[0]?.image || "";
   };
 
   // Получение заголовка

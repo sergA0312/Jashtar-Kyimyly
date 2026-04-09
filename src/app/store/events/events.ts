@@ -33,6 +33,8 @@ export const eventsStore = create<EventsState>((set) => ({
     try {
       // Уберите /api/ из пути, так как baseURL уже содержит /api/
       const response = await axiosInstance.get("/home/");
+      console.log(response.data);
+
       console.log("Мероприятия загружены:", response.data);
 
       set({
