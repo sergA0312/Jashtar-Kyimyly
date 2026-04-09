@@ -53,7 +53,6 @@ function Card({ item, onClick }: CardProps) {
       console.log("Старый формат, images:", item.images);
       return item.images?.[0]?.image || defaultImg;
     }
-    return item.images?.[0]?.image || "";
   };
 
   // Получение заголовка
