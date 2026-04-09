@@ -1,70 +1,59 @@
-// EventsArchive.tsx
+// src/pages/NewsPage/OtherNews/OtherNews.tsx
 import NewsCard from "@/widgets/NewsCard/NewsCard";
-import { useNavigate } from "react-router-dom";
-import scss from "./OtherNews.module.scss";
-import { useTranslation } from "react-i18next";
-import { useEffect } from "react";
 import { NewsStore } from "@/app/store/news/news";
-import { NewsDetailStore } from "@/app/store/news/newsDetail";
-interface Event {
-  id: number;
-  img: string;
-  title: string;
-  description: string;
-}
+import { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import styles from "./OtherNews.module.scss";
 
-export function OtherNews() {
-  const usenavigate = useNavigate();
-  const { t, i18n } = useTranslation();
-  const { news, loading, error, fetchnews } = NewsStore();
+function OtherNews() {
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+  const { id } = useParams(); // Получаем ID текущей новости из URL
+  const { news, loading, fetchnews } = NewsStore();
+
   useEffect(() => {
     fetchnews();
   }, [fetchnews]);
-  const { fetchNewsDetail } = NewsDetailStore();
-  const data = [
-    {
-      id: 1,
-      image:
-        "https://groups.google.com/group/digital-services-2024/attach/25a9aa043ccfb/6.jpg?part=0.1&view=1",
-      title: "Как уже неоднократно упомянуто",
-      description:
-        "Как уже неоднократно упомянуто, интерактивные прототипы, вне зависимости от их уровня, должны быть преданы социально-демократической анафеме.",
-      date: Date(),
-    },
-    {
-      id: 2,
-      image:
-        "https://groups.google.com/group/digital-services-2024/attach/25a9aa043ccfb/6.jpg?part=0.1&view=1",
-      title: "Как уже неоднократно упомянуто",
-      description:
-        "Как уже неоднократно упомянуто, интерактивные прототипы, вне зависимости от их уровня, должны быть преданы социально-демократической анафеме.",
-      date: Date(),
-    },
-    {
-      id: 3,
-      image:
-        "https://groups.google.com/group/digital-services-2024/attach/25a9aa043ccfb/6.jpg?part=0.1&view=1",
-      title: "Как уже неоднократно упомянуто",
-      description:
-        "Как уже неоднократно упомянуто, интерактивные прототипы, вне зависимости от их уровня, должны быть преданы социально-демократической анафеме.",
-      date: Date(),
-    },
-  ];
+
+  const newsList = news?.news_list || [];
+
+  // Исключаем текущую новость из списка "Другие новости"
+  const otherNewsList = newsList.filter((item) => item.id !== Number(id));
+
+  // Показываем только первые 3 новости
+  const displayNews = otherNewsList.slice(0, 3);
+
+  if (loading) {
+    return (
+      <div className="container">
+        <div className={styles.loader}>Загрузка других новостей...</div>
+      </div>
+    );
+  }
+
+  if (displayNews.length === 0) {
+    return (
+      <div className="container">
+        <div className={styles.noNews}>
+          <p>{t("news.noOtherNews") || "Нет других новостей"}</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="container">
-      <div className={scss.news}>
-        <div className={scss.newsTitle}>
-          <h1>{t("news.otherNews")}</h1>
-          <button onClick={() => usenavigate("/news")}>
-            {t("landing.button")}
-          </button>
-        </div>
-        <div className={scss.newsCards}>
-          {data.slice(0, 3).map((event) => (
+      <div className={styles.otherNews}>
+        <h2 className={styles.sectionTitle}>
+          {t("news.otherNews") || "Другие новости"}
+        </h2>
+        <div className={styles.newsGrid}>
+          {displayNews.map((newsItem) => (
             <NewsCard
-              onClick={() => usenavigate(`/news/${event.id}`)}
-              key={event.id}
-              item={event}
+              key={newsItem.id}
+              item={newsItem}
+              onClick={() => navigate(`/news/${newsItem.id}`)}
             />
           ))}
         </div>
@@ -72,3 +61,5 @@ export function OtherNews() {
     </div>
   );
 }
+
+export default OtherNews;

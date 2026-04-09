@@ -1,21 +1,20 @@
-import { axiosInstance } from "@/app/api/apiclient";
-import { AxiosError } from "axios";
+// src/app/store/news/newsDetail.ts
 import { create } from "zustand";
+import { axiosInstance } from "@/app/api/apiclient";
 
-interface NewsDetail {
+export interface NewsDetailItem {
   id: number;
-  title: string;
+  title?: string;
+  data: string;
+  news_image: string;
   description: string;
-  date: string;
-  image: string;
 }
 
 interface NewsDetailState {
-  newsdetail: NewsDetail | null; 
+  newsdetail: NewsDetailItem | null;
   loading: boolean;
   error: string | null;
   fetchNewsDetail: (id: number) => Promise<void>;
-  reset: () => void; 
 }
 
 export const NewsDetailStore = create<NewsDetailState>((set) => ({
@@ -26,26 +25,34 @@ export const NewsDetailStore = create<NewsDetailState>((set) => ({
   fetchNewsDetail: async (id: number) => {
     set({ loading: true, error: null });
     try {
-      const response = await axiosInstance.get<NewsDetail>(`content/news/${id}/`);
+      // Если есть отдельный эндпоинт для детальной новости
+      const response = await axiosInstance.get(`/news/${id}/`);
+      set({ newsdetail: response.data, loading: false });
+    } catch (err: any) {
+      // Если нет отдельного эндпоинта, получаем из списка
+      try {
+        const homeResponse = await axiosInstance.get("/home/");
+        const newsList = homeResponse.data.news_list || [];
+        const foundNews = newsList.find((item: any) => item.id === id);
 
-      const apiData = response.data; 
-      const transformedData = {
-        id: apiData.id,
-        title: apiData.title,
-        description: apiData.description,
-        date: apiData.date,
-        image: apiData.image,
-      };
-
-      set({ newsdetail: transformedData });
-    } catch (err) {
-      const error = err as AxiosError<{ message: string }>;
-      set({ error: error.response?.data?.message || "Что-то пошло не так" });
-      console.error("Ошибка при загрузке детали новости:", error);
-    } finally {
-      set({ loading: false });
+        if (foundNews) {
+          set({
+            newsdetail: {
+              ...foundNews,
+              title: foundNews.title || foundNews.description?.slice(0, 50),
+            },
+            loading: false,
+          });
+        } else {
+          throw new Error("Новость не найдена");
+        }
+      } catch (error) {
+        set({
+          newsdetail: null,
+          loading: false,
+          error: err.message || "Ошибка загрузки новости",
+        });
+      }
     }
   },
-
-  reset: () => set({ newsdetail: null, error: null, loading: false }),
 }));

@@ -42,39 +42,18 @@ export default function Routing() {
     { link: "/profile", page: <Profile />, id: 13 },
     { link: "/main", page: <Main />, id: 14 },
     { link: "/detailview/:id", page: <DetailView />, id: 15 },
-    { link: "/events", page: <Events />, id: 16 },
-    { link: "/detailview", page: <DetailView />, id: 15 },
-    { link: "*", page: <NotFound />, id: 16 },
-    { link: "/eventsArchivePage", page: <EventsArchivePage />, id: 18 },
-    { link: "/news", page: <News />, id: 19 },
-    { link: "/newsheadline", page: <NewsPage />, id: 20 },
-    { link: "/verify-email", page: <VerifyToken />, id: 21 },
-    { link: "/forgot-password", page: <ForgotPassword />, id: 22 },
-    { link: "/verify-code", page: <VerifyCode />, id: 23 },
-    { link: "/new-password/:code", page: <NewPassword />, id: 24 },
-    { link: "/eventsArchivePage", page: <EventsArchivePage />, id: 17 },
-    { link: "/news", page: <News />, id: 18 },
-    { link: "/news/:id", page: <NewsPage />, id: 19 },
-    { link: "*", page: <NotFound />, id: 20 },
+    { link: "/detailview", page: <DetailView />, id: 16 },
     { link: "/events", page: <Events />, id: 17 },
-    { link: "/eventsArchivePage", page: <EventsArchivePage />, id: 18 },
-    { link: "/news", page: <News />, id: 19 },
-    { link: "nameoftheevent", page: <NameOfTheEvent />, id: 20 },
-
-    { link: "/events/:id", page: <NameOfTheEvent />, id: 20 },
-    // { link: "/newsheadline", page: <ActivitiesPage />, id: 21 },
-    // { link: "/brandmaterials", page: <Main />, id: 21 },
-    // { link: "/about-motion", page: <AboutUsPage />, id: 2 },
-
-    // { link: "/directions", page: <NewsPage />, id: 3 },
-    // { link: "/events", page: <NewsDetailPage />, id: 12 },
-
-    // { link: "/projects", page: <ProductsPage />, id: 4 },
-    // { link: "/media", page: <ProductDetailPage />, id: 8 },
-
-    // { link: "/reg-departments", page: <FAQPage />, id: 5 },
-    // { link: "/signup", page: <SignUpPage />, id: 6 },
-    // { link: "/login", page: <LoginPage />, id: 7 },
+    { link: "/events/:id", page: <NameOfTheEvent />, id: 18 },
+    { link: "/eventsArchivePage", page: <EventsArchivePage />, id: 19 },
+    { link: "/news", page: <News />, id: 20 }, // ← ИСПРАВЛЕНО: убран item={undefined}
+    { link: "/news/:id", page: <NewsPage />, id: 21 }, // ← Детальная страница новости
+    { link: "/verify-email", page: <VerifyToken />, id: 22 },
+    { link: "/forgot-password", page: <ForgotPassword />, id: 23 },
+    { link: "/verify-code", page: <VerifyCode />, id: 24 },
+    { link: "/new-password/:code", page: <NewPassword />, id: 25 },
+    { link: "/nameoftheevent", page: <NameOfTheEvent />, id: 26 },
+    { link: "*", page: <NotFound />, id: 27 },
   ];
 
   return (
