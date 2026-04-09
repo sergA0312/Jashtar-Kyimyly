@@ -300,7 +300,7 @@ function EventsArchivePage() {
               >
                 {page}
               </button>
-            )
+            ),
           )}
 
           <button

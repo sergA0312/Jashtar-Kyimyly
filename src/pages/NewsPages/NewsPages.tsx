@@ -1,67 +1,48 @@
-// EventsArchive.tsx
-import { NewsStore } from "@/app/store/news/news";
-import img from "../../shared/assets/images/photo.png";
-import scss from "./NewPages.module.scss";
+// src/pages/NewsPages/NewsPages.tsx
 import NewsCard from "@/widgets/NewsCard/NewsCard";
+import { NewsStore } from "@/app/store/news/news";
 import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { NewsDetailStore } from "@/app/store/news/newsDetail";
+import { useTranslation } from "react-i18next";
+import styles from "./NewPages.module.scss";
 
-export function NewsPages() {
-  const { fetchNewsDetail } = NewsDetailStore();
-  const usenavigate = useNavigate();
-  const { t, i18n } = useTranslation();
-  const changeLanguage = (lng: string) => i18n.changeLanguage(lng);
-  const { news, loading, error, fetchnews } = NewsStore();
+function NewsPages() {
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+  const { news, loading, fetchnews } = NewsStore();
+
   useEffect(() => {
     fetchnews();
   }, [fetchnews]);
-  const data = [
-    {
-      id: 1,
-      image:
-        "https://groups.google.com/group/digital-services-2024/attach/25a9aa043ccfb/6.jpg?part=0.1&view=1",
-      title: "Как уже неоднократно упомянуто",
-      description:
-        "Как уже неоднократно упомянуто, интерактивные прототипы, вне зависимости от их уровня, должны быть преданы социально-демократической анафеме.",
-      date: Date(),
-    },
-    {
-      id: 2,
-      image:
-        "https://groups.google.com/group/digital-services-2024/attach/25a9aa043ccfb/6.jpg?part=0.1&view=1",
-      title: "Как уже неоднократно упомянуто",
-      description:
-        "Как уже неоднократно упомянуто, интерактивные прототипы, вне зависимости от их уровня, должны быть преданы социально-демократической анафеме.",
-      date: Date(),
-    },
-    {
-      id: 3,
-      image:
-        "https://groups.google.com/group/digital-services-2024/attach/25a9aa043ccfb/6.jpg?part=0.1&view=1",
-      title: "Как уже неоднократно упомянуто",
-      description:
-        "Как уже неоднократно упомянуто, интерактивные прототипы, вне зависимости от их уровня, должны быть преданы социально-демократической анафеме.",
-      date: Date(),
-    },
-  ];
+
+  const newsList = news?.news_list || [];
+
+  const transformedNews = newsList.map((item) => ({
+    id: item.id,
+    data: item.data,
+    news_image: item.news_image,
+    description: item.description,
+  }));
+
+  if (loading) {
+    return <div className="container">Загрузка...</div>;
+  }
 
   return (
     <div className="container">
-      <div className={scss.news}>
-        <div className={scss.newsTitle}>
-          <h1>{t("landing.news")}</h1>
-          <button onClick={() => usenavigate("/news")}>
-            {t("landing.button")}
+      <div className={styles.news}>
+        <div className={styles.newsTitle}>
+          <h1>{t("news.news") || "Новости"}</h1>
+          <button onClick={() => navigate("/news")}>
+            {t("landing.button") || "Все новости"}
           </button>
         </div>
-        <div className={scss.newsCards}>
-          {data.slice(0, 3).map((event) => (
+        <div className={styles.newsCards}>
+          {transformedNews.slice(0, 3).map((newsItem) => (
             <NewsCard
-              onClick={() => usenavigate(`/news/${event.id}`)}
-              key={event.id}
-              item={event}
+              key={newsItem.id}
+              item={newsItem}
+              onClick={() => navigate(`/news/${newsItem.id}`)}
             />
           ))}
         </div>
@@ -69,3 +50,5 @@ export function NewsPages() {
     </div>
   );
 }
+
+export default NewsPages;

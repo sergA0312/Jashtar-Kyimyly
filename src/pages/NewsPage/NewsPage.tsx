@@ -1,6 +1,6 @@
 import Navpanel from "@/widgets/Navpanel/Navpanel";
 import NewsHeadline from "./NewsHeadline/NewsHeadline";
-import { OtherNews } from "./OtherNews/OtherNews";
+import OtherNews from "./OtherNews/OtherNews";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { NewsDetailStore } from "@/app/store/news/newsDetail";
@@ -8,27 +8,79 @@ import { useEffect } from "react";
 import { useLanguageStore } from "@/app/store/languageStore";
 
 function NewsPage() {
-  const { t, i18n } = useTranslation();
-  const { id } = useParams(); // <-- id из URL
+  const { t } = useTranslation();
+  const { id } = useParams();
   const { newsdetail, fetchNewsDetail, loading, error } = NewsDetailStore();
   const { currentLang } = useLanguageStore();
+
   useEffect(() => {
     if (id) {
       fetchNewsDetail(Number(id));
     }
-  }, [id, currentLang]);
-  const data = {
-    id: 1,
-    image:
-      "https://groups.google.com/group/digital-services-2024/attach/25a9aa043ccfb/6.jpg?part=0.1&view=1",
-    title: "Как уже неоднократно упомянуто",
-    description:
-      "Как уже неоднократно упомянуто, интерактивные прототипы, вне зависимости от их уровня, должны быть преданы социально-демократической анафеме.",
-    date: Date(),
-  };
-  // if (loading) return <p>Загрузка...</p>;
-  // if (error) return <p>Ошибка: {error}</p>;
-  // if (!newsdetail) return <p>Нет данных</p>;
+  }, [id, currentLang, fetchNewsDetail]);
+
+  // Состояние загрузки
+  if (loading) {
+    return (
+      <>
+        <Navpanel
+          text={t("news.home")}
+          link="/"
+          text2={t("news.news")}
+          link2="/news"
+          text3={t("news.loading") || "Загрузка..."}
+        />
+        <div
+          className="container"
+          style={{ padding: "60px 0", textAlign: "center" }}
+        >
+          <p>Загрузка новости...</p>
+        </div>
+      </>
+    );
+  }
+
+  // Состояние ошибки
+  if (error) {
+    return (
+      <>
+        <Navpanel
+          text={t("news.home")}
+          link="/"
+          text2={t("news.news")}
+          link2="/news"
+          text3={t("news.error") || "Ошибка"}
+        />
+        <div
+          className="container"
+          style={{ padding: "60px 0", textAlign: "center" }}
+        >
+          <p style={{ color: "red" }}>Ошибка: {error}</p>
+        </div>
+      </>
+    );
+  }
+
+  // Если нет данных
+  if (!newsdetail) {
+    return (
+      <>
+        <Navpanel
+          text={t("news.home")}
+          link="/"
+          text2={t("news.news")}
+          link2="/news"
+          text3={t("news.notFound") || "Новость не найдена"}
+        />
+        <div
+          className="container"
+          style={{ padding: "60px 0", textAlign: "center" }}
+        >
+          <p>Новость не найдена</p>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -37,9 +89,9 @@ function NewsPage() {
         link="/"
         text2={t("news.news")}
         link2="/news"
-        text3={data.title}
+        text3={newsdetail.title || "Новость"}
       />
-      <NewsHeadline newsdetail={data} />
+      <NewsHeadline newsdetail={newsdetail} />
       <OtherNews />
     </>
   );

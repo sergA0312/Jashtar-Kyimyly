@@ -1,54 +1,56 @@
+// src/app/store/events/events.ts
 import { create } from "zustand";
 import { axiosInstance } from "@/app/api/apiclient";
-import { AxiosError } from "axios";
 
-interface Images {
-    id: number;
-    event: number;
-    image: string;
+// Типы данных из API
+export interface EventItem {
+  id: number;
+  title: string;
+  data: string;
+  image: string;
+  short_text: string;
 }
 
-export interface Events {
-    id: number;
-    title: string;
-    description: string;
-    date: string;
-    event_status: string;
-    images: Images[];
+export interface EventsResponse {
+  events: string;
+  events_list: EventItem[];
 }
 
 interface EventsState {
-    event: Events[]; 
-    loading: boolean;   
-    error: string | null;
-    fetchevents: () => Promise<void>; // было fetchevents, исправил на fetchEvents
+  event: EventsResponse | null;
+  loading: boolean;
+  error: string | null;
+  fetchevents: () => Promise<void>;
 }
 
 export const eventsStore = create<EventsState>((set) => ({
-    event: [],
-    loading: false,
-    error: null,
+  event: null,
+  loading: false,
+  error: null,
 
-    fetchevents: async () => {
-        set({ loading: true, error: null });
-        try {
-            const response = await axiosInstance.get<Events[]>("content/events/");
+  fetchevents: async () => {
+    set({ loading: true, error: null });
+    try {
+      // Уберите /api/ из пути, так как baseURL уже содержит /api/
+      const response = await axiosInstance.get("/home/");
+      console.log(response.data);
 
-            const transformedData = response.data.map((item) => ({
-                id: item.id,
-                title: item.title,
-                description: item.description,
-                date: item.date,
-                event_status: item.event_status,
-                images: item.images,
-            }));
+      console.log("Мероприятия загружены:", response.data);
 
-            set({ event: transformedData });
-        } catch (err) {
-            const error = err as AxiosError<{ message: string }>;
-            set({ error: error.response?.data?.message || "Something went wrong" });
-        } finally {
-            set({ loading: false });
-        }
-    },
+      set({
+        event: {
+          events: response.data.events || "Мероприятия",
+          events_list: response.data.events_list || [],
+        },
+        loading: false,
+      });
+    } catch (err: any) {
+      console.error("Ошибка при загрузке мероприятий:", err);
+      set({
+        event: null,
+        loading: false,
+        error: err.message || "Ошибка загрузки мероприятий",
+      });
+    }
+  },
 }));
