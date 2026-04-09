@@ -6,7 +6,7 @@ import { NewsStore } from "./news/news";
 // import { NewsDetailStore } from "./news/newsDetail";
 import { useVideoStore } from "./Media/video";
 // import { useAboutMovementStore } from "./about-movement/aboutMovementStore"; // пример стора с запросами
-import { useAboutMovementStore2 } from "./aboutMovement/aboutMovement"; 
+import { useAboutMovementStore2 } from "./aboutMovement/aboutMovement";
 // import { NewsStore } from "./news/news";
 import { eventsStore } from "./events/events";
 import { BannerStore } from "./banner/banner";
@@ -28,7 +28,10 @@ export const useLanguageStore = create<LanguageState>((set) => ({
     useAboutMovementStore.getState().fetchAboutMovement();
     NewsStore.getState().fetchnews();
     useVideoStore.getState().fetchVideos();
-    useImagesStore.getState().fetchImages().catch(err => console.error(err));
+    useImagesStore
+      .getState()
+      .fetchImages()
+      .catch((err) => console.error(err));
     eventsStore.getState().fetchevents();
     BannerStore.getState().fetchBanners();
     useAboutMovementStore2.getState().fetchAboutMovement();
