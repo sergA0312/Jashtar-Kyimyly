@@ -42,7 +42,7 @@ function Card({ item, onClick }: CardProps) {
     return "data" in item && "short_text" in item;
   };
 
-  // Получение изображения
+  // Получение изображения - ИСПРАВЛЕНО
   const getImageUrl = () => {
     if (isNewFormat(item)) {
       // Для нового формата из API
