@@ -46,12 +46,13 @@ function ActivitiesSection() {
       bgColor: "#E7BC5E",
     },
   ];
-  const { activities, fetchActivities } = useActivityStore();
-  console.log(activities);
+  const { data, error, fetchActivities } = useActivityStore();
 
   useEffect(() => {
     fetchActivities();
-  }, [fetchActivities]);
+  }, [fetchActivities, data]);
+
+  if (error) return <div>Error</div>;
 
   return (
     <section className={styles.activitiesSection}>
@@ -64,14 +65,8 @@ function ActivitiesSection() {
         {t("areaOfActivity.direction")}
       </Typography>
       <div className={styles.cardsContainer}>
-        {activities.map((activity, index) => (
-          <ActivityCard
-            key={index}
-            title={activity.title}
-            description={activity.description}
-            imageSrc={activity.image}
-            bgColor={activity.color}
-          />
+        {data?.items?.map((item, index) => (
+          <ActivityCard key={item.id} item={item} />
         ))}
       </div>
     </section>

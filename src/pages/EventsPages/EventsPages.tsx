@@ -200,7 +200,7 @@ export function EventsPages() {
             gap: "30px",
           }}
         >
-          {eventsList.slice(0, count).map((eventItem) => (
+          {eventsList.map((eventItem) => (
             <Card
               onClick={() => navigate(`/events/${eventItem.id}/`)}
               key={eventItem.id}

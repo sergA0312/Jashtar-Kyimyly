@@ -1,29 +1,30 @@
 import { create } from "zustand";
 import { axiosInstance } from "@/app/api/apiclient";
 
-// Тип для массива картинок, которые приходят от API
-interface ProjectImage {
+// Типы API
+interface ProjectItemApi {
   id: number;
-  project: number;
+  title: string;
+  image: string;
+  short_text: string;
+}
+
+interface ProjectGroupApi {
+  id: number;
+  title: string;
+  goals_title: string;
+  project_items: ProjectItemApi[];
+}
+
+// Тип для UI
+export interface Project {
+  id: number;
+  title: string;
+  description: string;
   image: string;
 }
 
-// Тип для объекта проекта, который приходит от API
-interface ProjectApi {
-  id: number;
-  title: string;
-  description: string;
-  images: ProjectImage[];
-}
-
-// Упрощённый проект, который используем во фронте
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  image: string; // берём только первую картинку
-}
-
+// Состояние стора
 interface ProjectState {
   data: Project[];
   loading: boolean;
@@ -39,19 +40,23 @@ export const useProjectStore = create<ProjectState>((set) => ({
   fetchProjects: async () => {
     set({ loading: true, error: null });
     try {
-      // Типизируем ответ от API
-      const response = await axiosInstance.get<ProjectApi[]>("/content/projects/");
+      // Получаем массив групп проектов
+      const response = await axiosInstance.get<ProjectGroupApi[]>(
+        "/project/projects/"
+      );
       const apiData = response.data;
 
-      // Трансформируем данные под удобный формат
-      const transformedData: Project[] = apiData.map((item) => ({
-        id: item.id,
-        title: item.title,
-        description: item.description,
-        image: item.images.length > 0 ? item.images[0].image : "",
-      }));
+      // Извлекаем все проекты из project_items
+      const allProjects: Project[] = apiData.flatMap((group) =>
+        group.project_items.map((item) => ({
+          id: item.id,
+          title: item.title,
+          description: item.short_text,
+          image: item.image,
+        }))
+      );
 
-      set({ data: transformedData, loading: false });
+      set({ data: allProjects, loading: false });
     } catch (err: unknown) {
       if (err instanceof Error) {
         console.error("Ошибка при загрузке проектов:", err.message);

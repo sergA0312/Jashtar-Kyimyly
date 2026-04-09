@@ -25,7 +25,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({
     const match = url.match(regExp);
     return match ? `https://www.youtube.com/embed/${match[1]}` : "";
   };
-  const embedUrl = getEmbedUrl(videoUrl);
+  const embedUrl = getEmbedUrl(videoUrl || "");
   if (!embedUrl) {
     return <div className={styles.card}>Неверная ссылка на видео</div>;
   }
