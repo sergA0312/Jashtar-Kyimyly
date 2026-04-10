@@ -60,27 +60,17 @@ export const OurMissionSection = () => {
 
           <hr className={styles.divider} />
 
-          <div className={styles.imageGrid}>
-            <div className={styles.galleryTop}>
-              {data?.missions_items?.slice(0, 3).map((img, index) => (
+          <div className={styles.imageContent}>
+            {data?.missions_items?.map((img, index) => (
+              <div key={index} className={styles[`p${index + 1}`]}>
                 <img
                   key={index}
                   src={img.image}
                   alt={`img${index + 1}`}
-                  className={styles[`image${index + 2}`]}
+                  className={styles[`p${index + 1}`]}
                 />
-              ))}
-            </div>
-            <div className={styles.galleryBottom}>
-              {data?.missions_items?.slice(3, 5).map((img, index) => (
-                <img
-                  key={index}
-                  src={img.image}
-                  alt={`img${index + 5}`}
-                  className={styles[`image${index + 5}`]}
-                />
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </MultiContainer>

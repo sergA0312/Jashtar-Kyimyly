@@ -3,6 +3,7 @@ import Card from "@/widgets/Card/Card";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import scss from "./EventsPages.module.scss";
 
 export function EventsPages() {
   const navigate = useNavigate();
@@ -165,42 +166,15 @@ export function EventsPages() {
 
   return (
     <div className="container">
-      <div style={{ padding: "40px 0" }}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: "30px",
-          }}
-        >
-          <h1 style={{ fontSize: "32px", fontWeight: "700" }}>
-            {t("landing.upcomingEvents")}
-          </h1>
-          <button
-            onClick={() => navigate("/events")}
-            style={{
-              padding: "10px 24px",
-              background: "transparent",
-              border: "2px solid #0066cc",
-              color: "#0066cc",
-              borderRadius: "8px",
-              cursor: "pointer",
-              fontSize: "16px",
-              fontWeight: "500",
-            }}
-          >
+      <div className={scss.event}>
+        <div className={scss.eventTitle}>
+          <h1>{t("landing.upcomingEvents")}</h1>
+          <button onClick={() => navigate("/events")}>
             {t("landing.button")}
           </button>
         </div>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "30px",
-          }}
-        >
-          {eventsList.map((eventItem) => (
+        <div className={scss.eventCards}>
+          {eventsList.slice(0, count).map((eventItem) => (
             <Card
               onClick={() => navigate(`/events/${eventItem.id}/`)}
               key={eventItem.id}

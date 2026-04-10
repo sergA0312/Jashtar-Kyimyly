@@ -55,21 +55,23 @@ function ActivitiesSection() {
   if (error) return <div>Error</div>;
 
   return (
-    <section className={styles.activitiesSection}>
-      <Typography
-        variant="title"
-        weight="600"
-        color="black"
-        className={styles.sectionTitle}
-      >
-        {t("areaOfActivity.direction")}
-      </Typography>
-      <div className={styles.cardsContainer}>
-        {data?.items?.map((item, index) => (
-          <ActivityCard key={item.id} item={item} />
-        ))}
-      </div>
-    </section>
+    <div className="container">
+      <section className={styles.activitiesSection}>
+        <Typography
+          variant="title"
+          weight="600"
+          color="black"
+          className={styles.sectionTitle}
+        >
+          {t("areaOfActivity.direction")}
+        </Typography>
+        <div className={styles.cardsContainer}>
+          {data?.items?.map((item, index) => (
+            <ActivityCard key={item.id} item={item} />
+          ))}
+        </div>
+      </section>
+    </div>
   );
 }
 

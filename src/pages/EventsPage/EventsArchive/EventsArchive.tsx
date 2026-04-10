@@ -1,21 +1,29 @@
 import { eventsStore } from "@/app/store/events/events";
 import Card from "@/widgets/Card/Card";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-
+import scss from "./style.module.scss";
 export function EventsArchive() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { event, loading, error, fetchevents } = eventsStore();
+  const [count, setCount] = useState(3);
 
   useEffect(() => {
     fetchevents();
   }, [fetchevents]);
 
   const eventsList = event?.events_list || [];
+  useEffect(() => {
+    const handleResize = () => {
+      setCount(window.innerWidth <= 977 ? 2 : 3);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-  // Фильтруем прошедшие мероприятия
   const pastEvents = eventsList.filter((eventItem) => {
     if (!eventItem.data) return false;
     const eventDate = new Date(eventItem.data);
@@ -44,72 +52,22 @@ export function EventsArchive() {
 
   return (
     <div className="container">
-      <div style={{ padding: "40px 0" }}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: "30px",
-          }}
-        >
-          <h1 style={{ fontSize: "32px", fontWeight: "700" }}>
-            {t("events.archive") || "Архив мероприятий"}
-          </h1>
-          <button
-            onClick={() => navigate("/events")}
-            style={{
-              padding: "10px 24px",
-              background: "transparent",
-              border: "2px solid #0066cc",
-              color: "#0066cc",
-              borderRadius: "8px",
-              cursor: "pointer",
-              fontSize: "16px",
-              fontWeight: "500",
-            }}
-          >
-            {t("events.upcoming") || "Актуальные мероприятия"}
+      <div className={scss.eventPage}>
+        <div className={scss.eventPageTitle}>
+          <h1>{t("events.eventArchive")}</h1>
+          <button onClick={() => navigate("/events")}>
+            {t("landing.button")}
           </button>
         </div>
-
-        {pastEvents.length === 0 ? (
-          <div style={{ textAlign: "center", padding: "60px 20px" }}>
-            <p style={{ color: "#999", fontSize: "18px" }}>
-              Нет прошедших мероприятий
-            </p>
-          </div>
-        ) : (
-          <>
-            <div
-              style={{
-                marginBottom: "20px",
-                padding: "10px",
-                background: "#f5f5f5",
-                borderRadius: "8px",
-              }}
-            >
-              <span style={{ color: "#666", fontSize: "14px" }}>
-                Всего в архиве: {pastEvents.length}
-              </span>
-            </div>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
-                gap: "30px",
-              }}
-            >
-              {pastEvents.map((eventItem) => (
-                <Card
-                  key={eventItem.id}
-                  item={eventItem}
-                  onClick={() => navigate(`/events/${eventItem.id}/`)}
-                />
-              ))}
-            </div>
-          </>
-        )}
+        <div className={scss.eventPageCards}>
+          {eventsList.slice(0, count).map((eventItem) => (
+            <Card
+              onClick={() => navigate(`/events/${eventItem.id}/`)}
+              key={eventItem.id}
+              item={eventItem}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

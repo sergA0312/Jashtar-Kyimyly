@@ -39,7 +39,7 @@
   .newsCards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    gap: 10px;
     @media (max-width: 977px) {
       grid-template-columns: repeat(2, 1fr);
     }

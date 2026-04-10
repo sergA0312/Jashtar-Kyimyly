@@ -1,7 +1,7 @@
 // src/pages/NewsPages/NewsPages.tsx
 import NewsCard from "@/widgets/NewsCard/NewsCard";
 import { NewsStore } from "@/app/store/news/news";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import styles from "./NewPages.module.scss";
@@ -10,11 +10,19 @@ function NewsPages() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { news, loading, fetchnews } = NewsStore();
+  const [count, setCount] = useState(3);
 
   useEffect(() => {
     fetchnews();
   }, [fetchnews]);
-
+  useEffect(() => {
+    const handleResize = () => {
+      setCount(window.innerWidth <= 977 ? 2 : 3);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const newsList = news?.news_list || [];
 
   const transformedNews = newsList.map((item) => ({
@@ -38,7 +46,7 @@ function NewsPages() {
           </button>
         </div>
         <div className={styles.newsCards}>
-          {transformedNews.slice(0, 3).map((newsItem) => (
+          {transformedNews.slice(0, count).map((newsItem) => (
             <NewsCard
               key={newsItem.id}
               item={newsItem}
