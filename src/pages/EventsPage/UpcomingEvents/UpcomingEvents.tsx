@@ -8,10 +8,12 @@ import { Navigation } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { eventsStore } from "@/app/store/events/events";
 
 const UpcomingEvents: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { fetchevents, event } = eventsStore();
 
   const data = [
     {
@@ -129,10 +131,10 @@ const UpcomingEvents: React.FC = () => {
             spaceBetween={20}
             breakpoints={{
               0: { slidesPerView: 2 },
-              768: { slidesPerView: 3 },
+              977: { slidesPerView: 3 },
             }}
           >
-            {data.map((event) => (
+            {event?.events_list.map((event) => (
               <SwiperSlide key={event.id} className={styles.slide}>
                 <Card
                   onClick={() => navigate(`/events/${event.id}`)}

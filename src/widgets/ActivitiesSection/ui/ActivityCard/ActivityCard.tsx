@@ -83,7 +83,6 @@ const ActivityCard: React.FC<ActivityCardProps> = ({ item }) => {
           </button>
         </div>
       </div>
-
       <div className={styles.imageContainer}>
         <img src={item.image} alt="" className={styles.image} />
       </div>

@@ -37,31 +37,25 @@ interface CardProps {
 function Card({ item, onClick }: CardProps) {
   const navigate = useNavigate();
 
-  // Функция для проверки типа item
   const isNewFormat = (item: CardItem): item is EventItem => {
     return "data" in item && "short_text" in item;
   };
 
-  // Получение изображения - ИСПРАВЛЕНО
   const getImageUrl = () => {
     if (isNewFormat(item)) {
-      // Для нового формата из API
       console.log("Новый формат, image:", item.image);
       return item.image || defaultImg;
     } else {
-      // Для старого формата
       console.log("Старый формат, images:", item.images);
       return item.images?.[0]?.image || defaultImg;
     }
   };
 
-  // Получение заголовка
   const getTitle = () => {
     const title = item.title;
     return title.length > 22 ? `${title.slice(0, 22)}...` : title;
   };
 
-  // Получение описания
   const getDescription = () => {
     let description = "";
     if (isNewFormat(item)) {
@@ -74,7 +68,6 @@ function Card({ item, onClick }: CardProps) {
       : description;
   };
 
-  // Получение даты
   const getDate = () => {
     if (isNewFormat(item)) {
       return item.data;
@@ -82,7 +75,6 @@ function Card({ item, onClick }: CardProps) {
     return item.date;
   };
 
-  // Форматирование даты
   const formattedDate = getDate()
     ? new Date(getDate()!).toLocaleDateString("ru-RU", {
         day: "2-digit",
@@ -90,7 +82,6 @@ function Card({ item, onClick }: CardProps) {
       })
     : "";
 
-  // Обработчик клика
   const handleClick = () => {
     if (onClick) {
       onClick();
